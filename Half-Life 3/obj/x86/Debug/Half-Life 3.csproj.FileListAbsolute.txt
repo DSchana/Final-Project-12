@@ -1,0 +1,26 @@
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Half-Life 3.exe
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Half-Life 3.pdb
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\MonoGame.Framework.dll
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.MediaFoundation.dll
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.dll
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.XAudio2.dll
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.Direct3D11.dll
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.DXGI.dll
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.Direct2D1.dll
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.XInput.dll
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.RawInput.dll
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.Direct3D9.dll
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Artemis.Engine.pdb
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\MonoGame.Framework.xml
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.MediaFoundation.xml
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.xml
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.XAudio2.xml
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.Direct3D11.xml
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.DXGI.xml
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.Direct2D1.xml
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.XInput.xml
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.RawInput.xml
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.Direct3D9.xml
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\obj\x86\Debug\Half-Life 3.csprojResolveAssemblyReference.cache
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\obj\x86\Debug\Half-Life 3.exe
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\obj\x86\Debug\Half-Life 3.pdb

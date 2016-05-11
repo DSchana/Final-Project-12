@@ -1,8 +1,8 @@
 
 #----------------------------- Global Properties ----------------------------#
 
-/outputDir:bin/Windows
-/intermediateDir:obj/Windows
+/outputDir:bin
+/intermediateDir:obj
 /platform:Windows
 /config:
 /profile:Reach
@@ -12,4 +12,9 @@
 
 
 #---------------------------------- Content ---------------------------------#
+
+#begin Artemiss.m4v
+/importer:
+/processor:
+/build:Artemiss.m4v
 

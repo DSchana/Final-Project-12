@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<GameSetup>
+  <!-- The default resolution of the screen. -->
+  <BaseResolution>800x600</BaseResolution>
+
+  <!-- Whether or not the window can be resized by dragging. -->
+  <WindowResizable>False</WindowResizable>
+
+  <!-- Whether or not the display is fullscreen. -->
+  <Fullscreen>True</Fullscreen>
+
+  <!-- Whether or not fullscreen display can be toggled during gameplay. -->
+  <FullscreenTogglable>True</FullscreenTogglable>
+
+  <!-- Whether or not the mouse cursor is visible within the screen boundaries. -->
+  <MouseVisible>True</MouseVisible>
+
+  <!-- Whether or not the mouse cursor visibility can be toggled during gameplay. -->
+  <MouseVisibilityTogglable>False</MouseVisibilityTogglable>
+
+  <!-- Whether or not the display has a border. -->
+  <Borderless>False</Borderless>
+
+  <!-- Whether or not the border can be toggled during gameplay-->
+  <BorderTogglable>False</BorderTogglable>
+
+  <!-- The name of the display window. The default value of this property is the empty string. -->
+  <WindowTitle>Game</WindowTitle>
+
+  <!-- Whether or not vertical synchronization is used. -->
+  <VSync>True</VSync>
+
+  <!-- The default background colour of the display. -->
+  <BackgroundColour>Black</BackgroundColour>
+  <!-- Note: This value can be any colour in the Colors enum (e.g. CornflowerBlue). -->
+
+  <!-- The name of the content folder. -->
+  <ContentFolder>Content</ContentFolder>
+
+  <!-- Whether or not the frame rate of the game is fixed (to 60 FPS). -->
+  <FixedTimeStep>True</FixedTimeStep>
+
+  <!-- The frame rate of the game (if FixedTimeStep is true) -->
+  <FrameRate>60</FrameRate>
+
+  <!-- Whether or not the aspect ratio of the game window is static (unchangeable) during gameplay. -->
+  <StaticAspectRatio>False</StaticAspectRatio>
+
+  <!-- Whether or not the resolution of the game window is static (unchangeable) during gameplay. --> 
+  <StaticResolution>False</StaticResolution>
+
+  <!-- Whether or not the resolution can only be landscape (w > h). -->
+  <OnlyLandscapeResolutions>False</OnlyLandscapeResolutions>
+
+  <!-- Whether or not the resolution can only be portrait (w < h). -->
+  <OnlyPortraitResolutions>False</OnlyPortraitResolutions>
+</GameSetup>

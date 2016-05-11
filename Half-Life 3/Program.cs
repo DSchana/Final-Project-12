@@ -1,5 +1,6 @@
 ﻿using System;
 using Artemis.Engine;
+using Artemis.Engine.Input;
 
 namespace Half_Life_3
 {
@@ -15,16 +16,18 @@ namespace Half_Life_3
         [STAThread]
         static void Main()
         {
-            ArtemisEngine.Setup("game.setup", Initialize);
+            ArtemisEngine.Setup("game.setup", Setup);
+            ArtemisEngine.Begin(Initialize);
+        }
+
+        static void Setup()
+        {
+
         }
 
         static void Initialize()
         {
-            // Game initiallization routine
-            /*
-            using(var game = new Game1())
-                game.Run();
-                */
+            Console.WriteLine("Half-Life 3");
         }
     }
 #endif
