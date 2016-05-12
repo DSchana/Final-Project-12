@@ -27,7 +27,16 @@ namespace Half_Life_3
 
         static void Initialize()
         {
-            Console.WriteLine("Half-Life 3");
+            ArtemisEngine.DisplayManager.SetWindowTitle("Half-Life 3");
+            Run();
+        }
+
+        /// <summary>
+        /// Run the game
+        /// </summary>
+        static void Run()
+        {
+            Console.WriteLine("Running");
         }
     }
 #endif
