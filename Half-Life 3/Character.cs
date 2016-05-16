@@ -19,6 +19,8 @@ namespace Half_Life_3
         /// </summary>
         public bool IsPlayable { get; private set; }
 
+        public string CharacterName { get; private set; } = null;
+
         /// <summary>
         /// The current state in which the character
         /// is in.
@@ -49,6 +51,16 @@ namespace Half_Life_3
         public void ChangeState(AnimationState state)
         {
             CurrentState = state;
+        }
+
+        public void SetName(string name)
+        {
+            if (CharacterName != null)
+            {
+                CharacterName = name;
+                return;
+            }
+            throw new Exception("Character name cannot be changed after it has been set.");
         }
     }
 }
