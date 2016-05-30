@@ -14,7 +14,8 @@
 
         public void Run()
         {
-
+            // Rendering
+            Freeman.Render();
         }
     }
 }
