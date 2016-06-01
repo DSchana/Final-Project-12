@@ -5,6 +5,7 @@ using System.Text;
 using Artemis.Engine;
 using Artemis.Engine.Graphics;
 using Artemis.Engine.Graphics.Animation;
+using Microsoft.Xna.Framework;
 
 namespace Half_Life_3
 {
@@ -12,7 +13,7 @@ namespace Half_Life_3
     /// A genaric class for playable and non-playable
     /// characters.
     /// </summary>
-    class Character : Form
+    class Character : PhysicalForm 
     {
         /// <summary>
         /// Boolean value to state if the user can
@@ -48,10 +49,15 @@ namespace Half_Life_3
         /// </summary>
         public int Speed = 5;
 
+        public Character(string name) : base(name)
+        {
+            AddRenderer(Show);
+        }
+
         /// <summary>
         /// Render character to the screen
         /// </summary>
-        public override void Render()
+        public void Show()
         {
             throw new NotImplementedException();
         }

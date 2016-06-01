@@ -14,7 +14,7 @@ namespace Half_Life_3
         public KeyboardInput KeyIn { get; private set; }
         public MouseInput MouseIn { get; private set; }
 
-        public PlayableCharacter(string name, string AnimationFileName) : base()
+        public PlayableCharacter(string name, string AnimationFileName) : base(name)
         {
             Name = name;
             IsPlayable = true;

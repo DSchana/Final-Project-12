@@ -31,19 +31,19 @@ namespace Half_Life_3
         public Rectangle BoundingBox { get; private set; }
 
 
-        public Button(string lable, int x, int y, int width, int height)
+        public Button(string lable, int x, int y, int width, int height) : base(lable)
         {
             MouseIn = new MouseInput();
             BoundingBox = new Rectangle(x, y, width, height);
         }
 
-        public Button(string lable, Rectangle boundingBox)
+        public Button(string lable, Rectangle boundingBox) : base(lable)
         {
             MouseIn = new MouseInput();
             BoundingBox = boundingBox;
         }
 
-        public override void Render()
+        public void Show()
         {
             throw new NotImplementedException();
         }
