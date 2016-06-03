@@ -40,13 +40,15 @@
   <ItemGroup>
     <Compile Include="Button.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="CharacterManager.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="MenuMultiform.cs" />
     <Compile Include="PlayableCharacter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Weapon.cs" />
-    <Compile Include="WeaponType.cs" />
+    <Compile Include="Weapons\DamageType.cs" />
+    <Compile Include="Weapons\Weapon.cs" />
+    <Compile Include="Weapons\WeaponType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Artemis.Engine, Version=3.3.0.2238, Culture=neutral, processorArchitecture=x86">

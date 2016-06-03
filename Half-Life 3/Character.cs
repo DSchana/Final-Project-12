@@ -7,6 +7,8 @@ using Artemis.Engine.Graphics;
 using Artemis.Engine.Graphics.Animation;
 using Microsoft.Xna.Framework;
 
+// TODO: Do something for characters like Alyx who cannot die
+
 namespace Half_Life_3
 {
     /// <summary>
@@ -19,7 +21,7 @@ namespace Half_Life_3
         /// Boolean value to state if the user can
         /// play as this character
         /// </summary>
-        public bool IsPlayable = false;
+        public bool IsPlayable { get; set; } = false;
 
         /// <summary>
         /// Character health (0-MaxHealth)

@@ -1,5 +1,6 @@
 ﻿using Artemis.Engine.Graphics.Animation;
 using Artemis.Engine.Input;
+using Half_Life_3.Weapons;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using System;
@@ -14,10 +15,15 @@ namespace Half_Life_3
         public KeyboardInput KeyIn { get; private set; }
         public MouseInput MouseIn { get; private set; }
 
+        // Populate
+        public List<Weapon> Weapons { get; private set; }
+        public Weapon CurrentWeapon { get; private set; }
+
         public PlayableCharacter(string name, string AnimationFileName) : base(name)
         {
             Name = name;
             IsPlayable = true;
+            Weapons = new List<Weapon>();
             AAMLReader = new AAMLFileReader(AnimationFileName);
 
             SetMaxHealth(100);
