@@ -70,17 +70,23 @@ namespace Half_Life_3
                 MaxAmmo = 125;
                 Damage = 30;
             }
+            else if (Type == WeaponType.Knife)
+            {
+                MaxClipSize = 0;
+                ClipAmmo = 1;
+                Damage = 60;
+            }
         }
 
         public void Update()
         {
             if (IsActive)
             {
-                if (ClipAmmo == 0 && MaxAmmo > 0)
+                if (ClipAmmo == 0 && MaxAmmo > 0 && Type != WeaponType.Knife)
                 {
                     Reload();
                 }
-                if (mouseIn.IsClicked(MouseButton.Left))
+                if (mouseIn.IsClicked(MouseButton.Left) && ClipAmmo > 0)
                 {
                     Fire();
                 }
@@ -104,7 +110,11 @@ namespace Half_Life_3
 
         public void Fire()
         {
-            ClipAmmo--;
+            if (Type != WeaponType.Knife)
+            {
+                ClipAmmo--;
+            }
+            // Animate
             // Deal damage
         }
     }

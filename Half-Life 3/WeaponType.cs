@@ -2,9 +2,9 @@
 {
     public enum WeaponType
     {
-        Knife,
-        USPMatch,
-        MP7,
-        SPAS12
+        Knife = 0,
+        USPMatch = 1,
+        MP7 = 2,
+        SPAS12 = 3
     }
 }
