@@ -12,12 +12,11 @@ namespace Half_Life_3
 {
     class PlayableCharacter : Character
     {
-        public KeyboardInput KeyIn { get; private set; }
-        public MouseInput MouseIn { get; private set; }
+        private KeyboardInput keyIn = new KeyboardInput();
+        private MouseInput mouseIn = new MouseInput();
 
         // Populate
         public List<Weapon> Weapons { get; private set; }
-        public Weapon CurrentWeapon { get; private set; }
 
         public PlayableCharacter(string name, string AnimationFileName) : base(name)
         {
@@ -28,9 +27,6 @@ namespace Half_Life_3
 
             SetMaxHealth(100);
 
-            KeyIn = new KeyboardInput();
-            MouseIn = new MouseInput();
-
             AddUpdater(Rotate);
             AddUpdater(Move);
             AddUpdater(Attack);
@@ -38,7 +34,7 @@ namespace Half_Life_3
 
         private void Rotate()
         {
-            Vector2 direction = MouseIn.PositionVector - ScreenPosition;
+            Vector2 direction = mouseIn.PositionVector - ScreenPosition;
             direction.Normalize();
 
             Rotation = (float)Math.Atan2(direction.Y, direction.X);
@@ -49,25 +45,25 @@ namespace Half_Life_3
             bool isMoving = false;
             Vector2 NewWorldPosition = new Vector2(WorldPosition.X, WorldPosition.Y);
 
-            if (KeyIn.IsHeld(Keys.W))
+            if (keyIn.IsHeld(Keys.W))
             {
                 isMoving = true;
                 NewWorldPosition.X += (float)(Speed * Math.Cos(Rotation));
                 NewWorldPosition.Y += (float)(Speed * Math.Sin(Rotation));
             }
-            if (KeyIn.IsHeld(Keys.A))
+            if (keyIn.IsHeld(Keys.A))
             {
                 isMoving = true;
                 NewWorldPosition.X -= (float)(Speed * Math.Cos(Rotation + 90));
                 NewWorldPosition.Y -= (float)(Speed * Math.Sin(Rotation + 90));
             }
-            if (KeyIn.IsHeld(Keys.S))
+            if (keyIn.IsHeld(Keys.S))
             {
                 isMoving = true;
                 NewWorldPosition.X -= (float)(Speed * Math.Cos(Rotation));
                 NewWorldPosition.Y -= (float)(Speed * Math.Sin(Rotation));
             }
-            if (KeyIn.IsHeld(Keys.D))
+            if (keyIn.IsHeld(Keys.D))
             {
                 isMoving = true;
                 NewWorldPosition.X += (float)(Speed * Math.Cos(Rotation + 90));
@@ -89,6 +85,14 @@ namespace Half_Life_3
         private void Attack()
         {
             ChangeState("Attack");
+            if (mouseIn.IsClicked(MouseButton.Left) && CurrentWeapon.ClipAmmo > 0)
+            {
+                CurrentWeapon.Fire();
+            }
+            else if (mouseIn.IsClicked(MouseButton.Right))
+            {
+                CurrentWeapon.Fire(DamageType.Melee);
+            }
         }
     }
 }

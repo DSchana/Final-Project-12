@@ -6,6 +6,7 @@ using Artemis.Engine;
 using Artemis.Engine.Graphics;
 using Artemis.Engine.Graphics.Animation;
 using Microsoft.Xna.Framework;
+using Half_Life_3.Weapons;
 
 // TODO: Do something for characters like Alyx who cannot die
 
@@ -38,12 +39,22 @@ namespace Half_Life_3
         /// AAMLReader to parse the aaml file associated
         /// with character.
         /// </summary>
-        public AAMLFileReader AAMLReader;
+        public AAMLFileReader AAMLReader { get; set; }
+
+        /// <summary>
+        /// Weapon currently held by character
+        /// </summary>
+        public Weapon CurrentWeapon { get; set; }
 
         /// <summary>
         /// The rotation of the character
         /// </summary>
-        public float Rotation;
+        public float Rotation { get; set; }
+
+        /// <summary>
+        /// The HitBox for a character
+        /// </summary>
+        public Rectangle BoundingBox { get; private set; }
 
         /// <summary>
         /// Speed of character
@@ -72,6 +83,7 @@ namespace Half_Life_3
         public void ChangeState(string state)
         {
             AAMLReader.Map.SetState(state);
+            // Set bounding box based on sprites
         }
 
         public void AddHealth(int health)
