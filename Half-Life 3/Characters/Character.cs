@@ -10,7 +10,7 @@ using Half_Life_3.Weapons;
 
 // TODO: Do something for characters like Alyx who cannot die
 
-namespace Half_Life_3
+namespace Half_Life_3.Characters
 {
     /// <summary>
     /// A genaric class for playable and non-playable
@@ -22,7 +22,7 @@ namespace Half_Life_3
         /// Boolean value to state if the user can
         /// play as this character
         /// </summary>
-        public bool IsPlayable { get; set; } = false;
+        public bool IsPlayable { get; set; }
 
         /// <summary>
         /// Character health (0-MaxHealth)

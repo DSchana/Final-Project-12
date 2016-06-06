@@ -4,7 +4,7 @@ using Half_Life_3.Weapons;
 using System.Linq;
 using System.Text;
 
-namespace Half_Life_3
+namespace Half_Life_3.Characters
 {
     /// <summary>
     /// Stores all characters and determines how damage is dealt.
@@ -82,15 +82,15 @@ namespace Half_Life_3
         /// Allow manager to determine damage type and perform appropriate actions
         /// </summary>
         /// <param name="damageType">The type of damage a character's weapon will be forced to exert</param>
-        public void DealDamage(Weapons.DamageType damageType)
+        public void DealDamage(DamageType damageType)
         {
             foreach (KeyValuePair<string, Character> character in Characters)
             {
-                if (damageType == Weapons.DamageType.Hitscan)
+                if (damageType == DamageType.Hitscan)
                 {
                     ScanHit(character.Value);
                 }
-                else if (damageType == Weapons.DamageType.Melee)
+                else if (damageType == DamageType.Melee)
                 {
                     MeeleHit(character.Value);
                 }
@@ -155,9 +155,10 @@ namespace Half_Life_3
                 }
             }
 
-            if (actualTarget != null)
+            // true if target is in front of character and not behind
+            if (actualTarget != null && Math.Abs(character.WorldPosition.X + Math.Cos(character.Rotation) - actualTarget.WorldPosition.X) < Math.Abs(character.WorldPosition.X - actualTarget.WorldPosition.X))
             {
-                if (actualDistanceToTarget <= character.CurrentWeapon.Range)
+                if (actualDistanceToTarget <= (int)character.CurrentWeapon.Range)
                 {
                     actualTarget.TakeDamage(character.CurrentWeapon.RangeDamage);
                 }
@@ -188,7 +189,7 @@ namespace Half_Life_3
                 {
                     double potentialDistanceToTarget = Math.Sqrt(Math.Pow(Math.Abs(potentialTarget.Value.WorldPosition.X - character.WorldPosition.X), 2) + Math.Pow(Math.Abs(potentialTarget.Value.WorldPosition.Y - character.WorldPosition.Y), 2));
 
-                    if (potentialDistanceToTarget < character.CurrentWeapon.MeleeRange)
+                    if (potentialDistanceToTarget < (int)character.CurrentWeapon.MeleeRange)
                     {
                         actualTargets.Add(potentialTarget.Value);
                     }
@@ -197,7 +198,11 @@ namespace Half_Life_3
 
             foreach (var target in actualTargets)
             {
-                target.TakeDamage(character.CurrentWeapon.MeleeDamage);
+                // true if target is in front of character and not behind
+                if (Math.Abs(character.WorldPosition.X + Math.Cos(character.Rotation) - target.WorldPosition.X) < Math.Abs(character.WorldPosition.X - target.WorldPosition.X))
+                {
+                    target.TakeDamage(character.CurrentWeapon.MeleeDamage);
+                }
             }
         }
     }

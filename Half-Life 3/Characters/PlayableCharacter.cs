@@ -8,14 +8,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Half_Life_3
+namespace Half_Life_3.Characters
 {
     class PlayableCharacter : Character
     {
         private KeyboardInput keyIn = new KeyboardInput();
         private MouseInput mouseIn = new MouseInput();
 
-        // Populate
+        // TODO: Populate
         public List<Weapon> Weapons { get; private set; }
 
         public PlayableCharacter(string name, string AnimationFileName) : base(name)

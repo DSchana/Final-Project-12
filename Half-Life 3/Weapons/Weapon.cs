@@ -1,4 +1,5 @@
 ﻿using Artemis.Engine.Input;
+using Half_Life_3.Characters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,12 +47,12 @@ namespace Half_Life_3.Weapons
         /// <summary>
         /// Damage range of weapon
         /// </summary>
-        public int Range { get; private set; }
+        public WeaponRange Range { get; private set; }
 
         /// <summary>
         /// Damage range of melee attack
         /// </summary>
-        public int MeleeRange { get; private set; }
+        public WeaponRange MeleeRange { get; private set; }
 
         /// <summary>
         /// Type of weapon
@@ -83,8 +84,8 @@ namespace Half_Life_3.Weapons
                 MaxAmmo = 150;
                 RangeDamage = 5;
                 MeleeDamage = 4;
-                Range = 1000;
-                MeleeRange = 100;
+                Range = WeaponRange.Medium;
+                MeleeRange = WeaponRange.Melee;
                 TypeDamage = DamageType.Hitscan;
             }
             else if (TypeWeapon == WeaponType.MP7)
@@ -93,8 +94,8 @@ namespace Half_Life_3.Weapons
                 MaxAmmo = 225;
                 RangeDamage = 4;
                 MeleeDamage = 5;
-                Range = 700;
-                MeleeRange = 100;
+                Range = WeaponRange.Medium;
+                MeleeRange = WeaponRange.Melee;
                 TypeDamage = DamageType.Hitscan;
             }
             else if (TypeWeapon == WeaponType.SPAS12)
@@ -103,8 +104,8 @@ namespace Half_Life_3.Weapons
                 MaxAmmo = 125;
                 RangeDamage = 30;
                 MeleeDamage = 8;
-                Range = 500;
-                MeleeRange = 200;
+                Range = WeaponRange.Short;
+                MeleeRange = WeaponRange.Melee;
                 TypeDamage = DamageType.Hitscan;
             }
             else if (TypeWeapon == WeaponType.Knife)
@@ -113,8 +114,8 @@ namespace Half_Life_3.Weapons
                 ClipAmmo = 1;
                 RangeDamage = 0;
                 MeleeDamage = 10;
-                Range = 0;
-                MeleeRange = 100;
+                Range = WeaponRange.None;
+                MeleeRange = WeaponRange.Melee;
                 TypeDamage = DamageType.Melee;
             }
         }
