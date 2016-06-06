@@ -38,16 +38,19 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Button.cs" />
-    <Compile Include="Character.cs" />
-    <Compile Include="CharacterManager.cs" />
+    <Compile Include="Menu\Button.cs" />
+    <Compile Include="Characters\Character.cs" />
+    <Compile Include="Characters\CharacterManager.cs" />
+    <Compile Include="Characters\CombineSoldier.cs" />
+    <Compile Include="Characters\CombineType.cs" />
+    <Compile Include="Characters\PlayableCharacter.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="MenuMultiform.cs" />
-    <Compile Include="PlayableCharacter.cs" />
+    <Compile Include="Menu\MenuMultiform.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Weapons\DamageType.cs" />
     <Compile Include="Weapons\Weapon.cs" />
+    <Compile Include="Weapons\WeaponRange.cs" />
     <Compile Include="Weapons\WeaponType.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -492,6 +495,9 @@
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fonts\HalfLife.ttf" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

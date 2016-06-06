@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GameSetup>
   <!-- The default resolution of the screen. -->
-  <BaseResolution>800x600</BaseResolution>
+  <BaseResolution>1680x1050</BaseResolution>
 
   <!-- Whether or not the window can be resized by dragging. -->
   <WindowResizable>False</WindowResizable>
@@ -16,16 +16,16 @@
   <MouseVisible>True</MouseVisible>
 
   <!-- Whether or not the mouse cursor visibility can be toggled during gameplay. -->
-  <MouseVisibilityTogglable>False</MouseVisibilityTogglable>
+  <MouseVisibilityTogglable>True</MouseVisibilityTogglable>
 
   <!-- Whether or not the display has a border. -->
   <Borderless>False</Borderless>
 
   <!-- Whether or not the border can be toggled during gameplay-->
-  <BorderTogglable>False</BorderTogglable>
+  <BorderTogglable>True</BorderTogglable>
 
   <!-- The name of the display window. The default value of this property is the empty string. -->
-  <WindowTitle>Game</WindowTitle>
+  <WindowTitle>Half-Life 3</WindowTitle>
 
   <!-- Whether or not vertical synchronization is used. -->
   <VSync>True</VSync>

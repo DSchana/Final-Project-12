@@ -1,5 +1,6 @@
-﻿using Half_Life_3.Characters;
-using Artemis.Engine;
+﻿using Artemis.Engine;
+using Half_Life_3.Characters;
+using Half_Life_3.Menu;
 
 namespace Half_Life_3
 {

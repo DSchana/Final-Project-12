@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Artemis.Engine;
+using Artemis.Engine.Graphics;
+using Artemis.Engine.Graphics.Animation;
+using Half_Life_3.Weapons;
+using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Artemis.Engine;
-using Artemis.Engine.Graphics;
-using Artemis.Engine.Graphics.Animation;
-using Microsoft.Xna.Framework;
-using Half_Life_3.Weapons;
 
 // TODO: Do something for characters like Alyx who cannot die
 
