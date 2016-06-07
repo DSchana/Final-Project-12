@@ -20,7 +20,6 @@ namespace Half_Life_3.Characters
 
         public PlayableCharacter(string name, string AnimationFileName) : base(name)
         {
-            Name = name;
             IsPlayable = true;
             Weapons = new List<Weapon>();
             AAMLReader = new AAMLFileReader(AnimationFileName);

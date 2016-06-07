@@ -63,6 +63,9 @@ namespace Half_Life_3.Menu
         {
             StreamWriter newFile = new StreamWriter(Directory.GetCurrentDirectory() + "\\hl_1.hlsave");
 
+            newFile.WriteLine(0 + " " + 0);  // Coords not right
+            newFile.WriteLine(0);  // Rotation
+
             newFile.Close();
         }
 

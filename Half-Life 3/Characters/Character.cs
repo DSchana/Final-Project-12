@@ -70,7 +70,7 @@ namespace Half_Life_3.Characters
         /// <summary>
         /// Render character to the screen
         /// </summary>
-        public void Show()
+        private void Show()
         {
             throw new NotImplementedException();
         }

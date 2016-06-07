@@ -16,7 +16,7 @@ namespace Half_Life_3
         [STAThread]
         static void Main()
         {
-            ArtemisEngine.Setup("game.setup", Setup);
+            ArtemisEngine.Setup("game.constants", Setup);
             ArtemisEngine.Begin(Initialize);
         }
 
