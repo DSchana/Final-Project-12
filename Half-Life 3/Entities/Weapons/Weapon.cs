@@ -1,13 +1,13 @@
 ﻿using Artemis.Engine.Input;
-using Half_Life_3.Characters;
+using Half_Life_3.Entities.Characters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Half_Life_3.Weapons
+namespace Half_Life_3.Entities.Weapons
 {
-    class Weapon
+    class Weapon : Entity
     {
         /// <summary>
         /// Current amount of ammo in clip
@@ -71,8 +71,9 @@ namespace Half_Life_3.Weapons
 
         private Random rnd = new Random();
 
-        public Weapon(Character character, WeaponType type)
+        public Weapon(string name, Character character, WeaponType type) : base(name)
         {
+            Type = EntityType.Weapon;
             TypeWeapon = type;
             IsActive = false;
             ClipAmmo = 0;
@@ -120,7 +121,7 @@ namespace Half_Life_3.Weapons
             }
         }
 
-        public void Update()
+        public void CheckUpdates()
         {
             if (IsActive)
             {
@@ -153,7 +154,7 @@ namespace Half_Life_3.Weapons
                 ClipAmmo--;
             }
             // Animate
-            Game1.CharManager.DealDamage(Holder);
+            Game1.EntManager.DealDamage(Holder);
         }
 
         public void Fire(DamageType damageType)
@@ -163,7 +164,7 @@ namespace Half_Life_3.Weapons
                 ClipAmmo--;
             }
             // Animate
-            Game1.CharManager.DealDamage(Holder, damageType);
+            Game1.EntManager.DealDamage(Holder, damageType);
         }
     }
 }

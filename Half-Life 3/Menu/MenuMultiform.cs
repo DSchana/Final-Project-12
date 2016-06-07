@@ -1,5 +1,5 @@
 ﻿using Artemis.Engine.Multiforms;
-using Artemis.Engine;
+using Artemis.Engine.Forms;
 using Artemis.Engine.Fixins;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

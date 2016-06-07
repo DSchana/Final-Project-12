@@ -1,6 +1,6 @@
 ﻿using Artemis.Engine.Graphics.Animation;
 using Artemis.Engine.Input;
-using Half_Life_3.Weapons;
+using Half_Life_3.Entities.Weapons;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using System;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Half_Life_3.Characters
+namespace Half_Life_3.Entities.Characters
 {
     class PlayableCharacter : Character
     {
@@ -20,6 +20,7 @@ namespace Half_Life_3.Characters
 
         public PlayableCharacter(string name, string AnimationFileName) : base(name)
         {
+            Type = EntityType.PlayableCharacter;
             IsPlayable = true;
             Weapons = new List<Weapon>();
             AAMLReader = new AAMLFileReader(AnimationFileName);

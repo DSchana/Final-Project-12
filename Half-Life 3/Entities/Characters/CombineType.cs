@@ -1,4 +1,4 @@
-﻿namespace Half_Life_3.Characters
+﻿namespace Half_Life_3.Entities.Characters
 {
     public enum CombineType
     {

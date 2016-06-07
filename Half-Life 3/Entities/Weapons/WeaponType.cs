@@ -1,4 +1,4 @@
-﻿namespace Half_Life_3.Weapons
+﻿namespace Half_Life_3.Entities.Weapons
 {
     public enum WeaponType
     {

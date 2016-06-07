@@ -1,46 +1,46 @@
 ﻿using Artemis.Engine.Graphics.Animation;
-using Half_Life_3.Weapons;
+using Half_Life_3.Entities.Weapons;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Half_Life_3.Characters
+namespace Half_Life_3.Entities.Characters
 {
     class Combine : Character
     {
         /// <summary>
         /// Combine overwatch type
         /// </summary>
-        public CombineType Type { get; private set; }
+        public CombineType CType { get; private set; }
 
         public Combine(string name, CombineType type, string AnimationFile) : base(name)
         {
             Name = name;
             IsPlayable = false;
-            Type = type;
+            CType = type;
             AAMLReader = new AAMLFileReader(AnimationFile);
 
-            if (Type == CombineType.CivilProtection)
+            if (CType == CombineType.CivilProtection)
             {
                 SetMaxHealth(40);
-                CurrentWeapon = new Weapon(this, WeaponType.USPMatch);
+                CurrentWeapon = new Weapon("CP_USP", this, WeaponType.USPMatch);
             }
-            else if (Type == CombineType.OverwatchSoldier)
+            else if (CType == CombineType.OverwatchSoldier)
             {
                 SetMaxHealth(50);
-                CurrentWeapon = new Weapon(this, WeaponType.MP7);
+                CurrentWeapon = new Weapon("OS_MP7", this, WeaponType.MP7);
             }
-            else if (Type == CombineType.OverwatchElite)
+            else if (CType == CombineType.OverwatchElite)
             {
                 SetMaxHealth(70);
-                CurrentWeapon = new Weapon(this, WeaponType.MP7);
+                CurrentWeapon = new Weapon("OE_MP7", this, WeaponType.MP7);
             }
-            else if (Type == CombineType.Stalker)
+            else if (CType == CombineType.Stalker)
             {
                 SetMaxHealth(25);
-                CurrentWeapon = new Weapon(this, WeaponType.USPMatch);
+                CurrentWeapon = new Weapon("S_USP", this, WeaponType.USPMatch);
             }
 
             AddUpdater(Rotate);

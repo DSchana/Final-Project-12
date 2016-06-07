@@ -1,7 +1,7 @@
 ﻿using Artemis.Engine;
 using Artemis.Engine.Graphics;
 using Artemis.Engine.Graphics.Animation;
-using Half_Life_3.Weapons;
+using Half_Life_3.Entities.Weapons;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -10,13 +10,13 @@ using System.Text;
 
 // TODO: Do something for characters like Alyx who cannot die
 
-namespace Half_Life_3.Characters
+namespace Half_Life_3.Entities.Characters
 {
     /// <summary>
     /// A genaric class for playable and non-playable
     /// characters.
     /// </summary>
-    class Character : PhysicalForm 
+    class Character : Entity
     {
         /// <summary>
         /// Boolean value to state if the user can
@@ -47,16 +47,6 @@ namespace Half_Life_3.Characters
         public Weapon CurrentWeapon { get; set; }
 
         /// <summary>
-        /// The rotation of the character
-        /// </summary>
-        public float Rotation { get; set; }
-
-        /// <summary>
-        /// The HitBox for a character
-        /// </summary>
-        public Rectangle BoundingBox { get; private set; }
-
-        /// <summary>
         /// Speed of character
         /// 5 is standard speed for most
         /// </summary>
@@ -64,13 +54,14 @@ namespace Half_Life_3.Characters
 
         public Character(string name) : base(name)
         {
+            Type = EntityType.Character;
             AddRenderer(Show);
         }
 
         /// <summary>
         /// Render character to the screen
         /// </summary>
-        private void Show()
+        private void Show() // TODO: Move to Entity
         {
             throw new NotImplementedException();
         }
