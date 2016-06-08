@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Half_Life_3.Entities.Weapons;
 using Half_Life_3.Entities.Characters;
+using Half_Life_3.Entities.Obstacles;
 using System.Linq;
 using System.Text;
 
@@ -63,7 +64,8 @@ namespace Half_Life_3.Entities
                 }
                 else if (entity.Value.Type == EntityType.Explosive)
                 {
-                    // Deal explosive damage to surrounding things
+                    Explosive explosive = entity.Value as Explosive;
+                    ExplosiveDamage(explosive);
                 }
             }
         }
@@ -88,7 +90,8 @@ namespace Half_Life_3.Entities
             }
             else if (entity.Type == EntityType.Explosive)
             {
-                // BOOM damage
+                Explosive explosive = entity as Explosive;
+                ExplosiveDamage(explosive);
             }
         }
 
@@ -114,7 +117,8 @@ namespace Half_Life_3.Entities
                 }
                 else if (entity.Value.Type == EntityType.Explosive && damageType == DamageType.Projectile)
                 {
-                    // BOOM damage
+                    Explosive explosive = entity.Value as Explosive;
+                    ExplosiveDamage(explosive);
                 }
             }
         }
@@ -140,7 +144,8 @@ namespace Half_Life_3.Entities
             }
             else if (entity.Type == EntityType.Explosive && damageType == DamageType.Projectile)
             {
-                // BOOM damage
+                Explosive explosive = entity as Explosive;
+                ExplosiveDamage(explosive);
             }
         }
 
@@ -232,6 +237,36 @@ namespace Half_Life_3.Entities
                 if (Math.Abs(character.WorldPosition.X + Math.Cos(character.Rotation) - target.WorldPosition.X) < Math.Abs(character.WorldPosition.X - target.WorldPosition.X))
                 {
                     target.TakeDamage(character.CurrentWeapon.MeleeDamage);
+                }
+            }
+        }
+        
+        public void ExplosiveDamage(Explosive explosive)
+        {
+            foreach (KeyValuePair<string, Entity> entity in Entities)
+            {
+                if (entity.Value == explosive)
+                {
+                    continue;
+                }
+
+                double distance = Math.Sqrt(Math.Pow(Math.Abs(entity.Value.WorldPosition.X - explosive.WorldPosition.X), 2) + Math.Pow(Math.Abs(entity.Value.WorldPosition.Y - explosive.WorldPosition.Y), 2));
+
+                if (distance <= 50)
+                {
+                    entity.Value.TakeDamage(explosive.ExplosiveDamage);
+                }
+                else if (distance <= 100)
+                {
+                    entity.Value.TakeDamage(explosive.ExplosiveDamage / 2);
+                }
+                else if (distance <= 400)
+                {
+                    entity.Value.TakeDamage(explosive.ExplosiveDamage / 4);
+                }
+                else if (distance <= 800)
+                {
+                    entity.Value.TakeDamage(explosive.ExplosiveDamage / 8);
                 }
             }
         }

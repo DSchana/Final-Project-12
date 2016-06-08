@@ -13,12 +13,15 @@ namespace Half_Life_3.Entities.Obstacles
         /// </summary>
         public bool IsBurning { get; private set; }
 
+        public int ExplosiveDamage { get; private set; }
+
         public Explosive(string name, int x, int y, int width, int height) : base(name, x, y, width, height, false)
         {
             Type = EntityType.Explosive;
             IsInteractable = true;
             IsBurning = false;
             Health = 10;
+            ExplosiveDamage = 40;
 
             AddUpdater(UpdateHealth);
             AddUpdater(Explode);

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/Resources/Gordon Freeman/handgun/meleeattack/freeman-meleeattack_handgun_2.png</SourceFile>
-  <SourceTime>2016-05-14T14:53:32.7567704-04:00</SourceTime>
+  <SourceTime>2016-06-08T08:31:31.7038911-04:00</SourceTime>
   <DestFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/bin/Windows/Resources/Gordon Freeman/handgun/meleeattack/freeman-meleeattack_handgun_2.xnb</DestFile>
-  <DestTime>2016-06-07T22:07:49.0993911-04:00</DestTime>
+  <DestTime>2016-06-08T13:30:07.1107386-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T13:14:44-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
