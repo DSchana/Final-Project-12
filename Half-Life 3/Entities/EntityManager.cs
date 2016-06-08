@@ -49,13 +49,21 @@ namespace Half_Life_3.Entities
         {
             foreach (KeyValuePair<string, Entity> entity in Entities)
             {
-                if (entity.Value.CurrentWeapon.TypeDamage == DamageType.Hitscan)
+                if (entity.Value.Type == EntityType.Character)
                 {
-                    ScanHit(entity.Value);
+                    Character character = entity.Value as Character;
+                    if (character.CurrentWeapon.TypeDamage == DamageType.Hitscan)
+                    {
+                        ScanHit(character);
+                    }
+                    else if (character.CurrentWeapon.TypeDamage == DamageType.Melee)
+                    {
+                        MeeleHit(character);
+                    }
                 }
-                else if (entity.Value.CurrentWeapon.TypeDamage == DamageType.Melee)
+                else if (entity.Value.Type == EntityType.Explosive)
                 {
-                    MeeleHit(entity.Value);
+                    // Deal explosive damage to surrounding things
                 }
             }
         }
@@ -64,15 +72,23 @@ namespace Half_Life_3.Entities
         /// Allow manager to determine damage type and perform appropriate actions
         /// </summary>
         /// <param name="character">The character wielding the weapon</param>
-        public void DealDamage(Character character)
+        public void DealDamage(Entity entity)
         {
-            if (character.CurrentWeapon.TypeDamage == DamageType.Hitscan)
+            if (entity.Type == EntityType.Character)
             {
-                ScanHit(character);
+                Character character = entity as Character;
+                if (character.CurrentWeapon.TypeDamage == DamageType.Hitscan)
+                {
+                    ScanHit(character);
+                }
+                else if (character.CurrentWeapon.TypeDamage == DamageType.Melee)
+                {
+                    MeeleHit(character);
+                }
             }
-            else if (character.CurrentWeapon.TypeDamage == DamageType.Melee)
+            else if (entity.Type == EntityType.Explosive)
             {
-                MeeleHit(character);
+                // BOOM damage
             }
         }
 
@@ -84,13 +100,21 @@ namespace Half_Life_3.Entities
         {
             foreach (KeyValuePair<string, Entity> entity in Entities)
             {
-                if (damageType == DamageType.Hitscan)
+                if (entity.Value.Type == EntityType.Character)
                 {
-                    ScanHit(entity.Value);
+                    Character character = entity.Value as Character;
+                    if (damageType == DamageType.Hitscan)
+                    {
+                        ScanHit(character);
+                    }
+                    else if (damageType == DamageType.Melee)
+                    {
+                        MeeleHit(character);
+                    }
                 }
-                else if (damageType == DamageType.Melee)
+                else if (entity.Value.Type == EntityType.Explosive && damageType == DamageType.Projectile)
                 {
-                    MeeleHit(entity.Value);
+                    // BOOM damage
                 }
             }
         }
@@ -102,30 +126,38 @@ namespace Half_Life_3.Entities
         /// <param name="damageType">The type of damage a character's weapon will be forced to exert</param>
         public void DealDamage(Entity entity, DamageType damageType)
         {
-            if (damageType == DamageType.Hitscan)
+            if (entity.Type == EntityType.Character)
             {
-                ScanHit(entity);
+                Character character = entity as Character;
+                if (damageType == DamageType.Hitscan)
+                {
+                    ScanHit(character);
+                }
+                else if (damageType == DamageType.Melee)
+                {
+                    MeeleHit(character);
+                }
             }
-            else if (damageType == DamageType.Melee)
+            else if (entity.Type == EntityType.Explosive && damageType == DamageType.Projectile)
             {
-                MeeleHit(entity);
+                // BOOM damage
             }
         }
 
         /// <summary>
         /// Allow manager to deal damage from hitscan weapons
         /// </summary>
-        public void ScanHit(Entity entity)
+        public void ScanHit(Character character)
         {
-            float slope = (float)(Math.Sin(entity.Rotation) / Math.Cos(entity.Rotation));
-            float y_int = entity.WorldPosition.Y - (slope * entity.WorldPosition.X);
+            float slope = (float)(Math.Sin(character.Rotation) / Math.Cos(character.Rotation));
+            float y_int = character.WorldPosition.Y - (slope * character.WorldPosition.X);
             Entity actualTarget = null;
             double actualDistanceToTarget = double.MaxValue;
 
             // Check collision and find target
             foreach (KeyValuePair<string, Entity> potentialTarget in Entities)
             {
-                if (Entities[entity.Name] != potentialTarget.Value)
+                if (Entities[character.Name] != potentialTarget.Value)
                 {
                     continue;
                 }
@@ -138,12 +170,12 @@ namespace Half_Life_3.Entities
                     if (actualTarget == null)
                     {
                         actualTarget = potentialTarget.Value;
-                        actualDistanceToTarget = Math.Sqrt(Math.Pow(Math.Abs(potentialTarget.Value.WorldPosition.X - entity.WorldPosition.X), 2) + Math.Pow(Math.Abs(potentialTarget.Value.WorldPosition.Y - entity.WorldPosition.Y), 2));
+                        actualDistanceToTarget = Math.Sqrt(Math.Pow(Math.Abs(potentialTarget.Value.WorldPosition.X - character.WorldPosition.X), 2) + Math.Pow(Math.Abs(potentialTarget.Value.WorldPosition.Y - character.WorldPosition.Y), 2));
                         continue;
                     }
 
                     // Find closet target. This is so if there are many targets in a line, only the closest is hit
-                    double potentialDistanceToTarget = Math.Sqrt(Math.Pow(Math.Abs(potentialTarget.Value.WorldPosition.X - entity.WorldPosition.X), 2) + Math.Pow(Math.Abs(potentialTarget.Value.WorldPosition.Y - entity.WorldPosition.Y), 2));
+                    double potentialDistanceToTarget = Math.Sqrt(Math.Pow(Math.Abs(potentialTarget.Value.WorldPosition.X - character.WorldPosition.X), 2) + Math.Pow(Math.Abs(potentialTarget.Value.WorldPosition.Y - character.WorldPosition.Y), 2));
 
                     if (potentialDistanceToTarget < actualDistanceToTarget)
                     {
@@ -154,28 +186,28 @@ namespace Half_Life_3.Entities
             }
 
             // true if target is in front of character and not behind
-            if (actualTarget != null && Math.Abs(entity.WorldPosition.X + Math.Cos(entity.Rotation) - actualTarget.WorldPosition.X) < Math.Abs(entity.WorldPosition.X - actualTarget.WorldPosition.X))
+            if (actualTarget != null && Math.Abs(character.WorldPosition.X + Math.Cos(character.Rotation) - actualTarget.WorldPosition.X) < Math.Abs(character.WorldPosition.X - actualTarget.WorldPosition.X))
             {
-                if (actualDistanceToTarget <= (int)entity.CurrentWeapon.Range)
+                if (actualDistanceToTarget <= (int)character.CurrentWeapon.Range)
                 {
-                    actualTarget.TakeDamage(entity.CurrentWeapon.RangeDamage);
+                    actualTarget.TakeDamage(character.CurrentWeapon.RangeDamage);
                 }
                 else
                 {
-                    actualTarget.TakeDamage(entity.CurrentWeapon.RangeDamage / 2);  // Damage drop-off if target is too far
+                    actualTarget.TakeDamage(character.CurrentWeapon.RangeDamage / 2);  // Damage drop-off if target is too far
                 }
             }
         }
 
-        public void MeeleHit(Entity entity)
+        public void MeeleHit(Character character)
         {
-            float slope = (float)(Math.Sin(entity.Rotation) / Math.Cos(entity.Rotation));
-            float y_int = entity.WorldPosition.Y - (slope * entity.WorldPosition.X);
+            float slope = (float)(Math.Sin(character.Rotation) / Math.Cos(character.Rotation));
+            float y_int = character.WorldPosition.Y - (slope * character.WorldPosition.X);
             List<Entity> actualTargets = new List<Entity>();
 
             foreach (KeyValuePair<string, Entity> potentialTarget in Entities)
             {
-                if (Entities[entity.Name] != potentialTarget.Value)
+                if (Entities[character.Name] != potentialTarget.Value)
                 {
                     continue;
                 }
@@ -185,9 +217,9 @@ namespace Half_Life_3.Entities
                 if ((slope * potentialTarget.Value.BoundingBox.X) + y_int - potentialTarget.Value.BoundingBox.Y <= potentialTarget.Value.BoundingBox.Height ||
                     (slope * (potentialTarget.Value.BoundingBox.X + potentialTarget.Value.BoundingBox.Width)) + y_int - potentialTarget.Value.BoundingBox.Y <= potentialTarget.Value.BoundingBox.Height)
                 {
-                    double potentialDistanceToTarget = Math.Sqrt(Math.Pow(Math.Abs(potentialTarget.Value.WorldPosition.X - entity.WorldPosition.X), 2) + Math.Pow(Math.Abs(potentialTarget.Value.WorldPosition.Y - entity.WorldPosition.Y), 2));
+                    double potentialDistanceToTarget = Math.Sqrt(Math.Pow(Math.Abs(potentialTarget.Value.WorldPosition.X - character.WorldPosition.X), 2) + Math.Pow(Math.Abs(potentialTarget.Value.WorldPosition.Y - character.WorldPosition.Y), 2));
 
-                    if (potentialDistanceToTarget < (int)entity.CurrentWeapon.MeleeRange)
+                    if (potentialDistanceToTarget < (int)character.CurrentWeapon.MeleeRange)
                     {
                         actualTargets.Add(potentialTarget.Value);
                     }
@@ -197,9 +229,9 @@ namespace Half_Life_3.Entities
             foreach (var target in actualTargets)
             {
                 // true if target is in front of character and not behind
-                if (Math.Abs(entity.WorldPosition.X + Math.Cos(entity.Rotation) - target.WorldPosition.X) < Math.Abs(entity.WorldPosition.X - target.WorldPosition.X))
+                if (Math.Abs(character.WorldPosition.X + Math.Cos(character.Rotation) - target.WorldPosition.X) < Math.Abs(character.WorldPosition.X - target.WorldPosition.X))
                 {
-                    target.TakeDamage(entity.CurrentWeapon.MeleeDamage);
+                    target.TakeDamage(character.CurrentWeapon.MeleeDamage);
                 }
             }
         }

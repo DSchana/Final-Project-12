@@ -1,4 +1,5 @@
-﻿using Artemis.Engine.Multiforms;
+﻿using Artemis.Engine.Assets;
+using Artemis.Engine.Multiforms;
 using Artemis.Engine.Forms;
 using Artemis.Engine.Fixins;
 using Microsoft.Xna.Framework;
@@ -36,7 +37,8 @@ namespace Half_Life_3.Menu
             // Attach Fixins from data in button objects
             foreach (var button in Buttons)
             {
-                ButtonForm.AttachFixin(new TextureFixin(button.Name, button.Name + ".png", new PositionalForm(button.Position)));  // TODO: Add texture
+                // Texture2D.FromStream(ArtemisEngine.RenderPipeline.GraphicsDevice, new FileStream("../../../Resources/Menu/" + button.Name + ".png", FileMode.Open))
+                ButtonForm.AttachFixin(new TextureFixin(button.Name, AssetLoader.Load<Texture2D>("Resources\\Menu\\" + button.Name + ".png", false), new PositionalForm(button.Position)));
             }
 
             SetUpdater(MainUpdater);

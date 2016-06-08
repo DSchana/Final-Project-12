@@ -25,11 +25,6 @@ namespace Half_Life_3.Entities.Characters
         public bool IsPlayable { get; set; }
 
         /// <summary>
-        /// Character health (0-MaxHealth)
-        /// </summary>
-        public int Health { get; private set; }
-
-        /// <summary>
         /// Max health of a character. Set automatically
         /// to be the initial health provided.
         /// </summary>
@@ -55,13 +50,14 @@ namespace Half_Life_3.Entities.Characters
         public Character(string name) : base(name)
         {
             Type = EntityType.Character;
+            Indestructible = false;
             AddRenderer(Show);
         }
 
         /// <summary>
         /// Render character to the screen
         /// </summary>
-        private void Show() // TODO: Move to Entity
+        private void Show()
         {
             throw new NotImplementedException();
         }
@@ -83,16 +79,6 @@ namespace Half_Life_3.Entities.Characters
             if (Health > MaxHealth)
             {
                 Health = MaxHealth;
-            }
-        }
-
-        public void TakeDamage(int damage)
-        {
-            Health -= damage;
-            if (Health <= 0)
-            {
-                Health = 0;
-                Kill();
             }
         }
 

@@ -74,6 +74,7 @@ namespace Half_Life_3.Entities.Weapons
         public Weapon(string name, Character character, WeaponType type) : base(name)
         {
             Type = EntityType.Weapon;
+            Indestructible = true;
             TypeWeapon = type;
             IsActive = false;
             ClipAmmo = 0;

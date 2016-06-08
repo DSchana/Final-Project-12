@@ -9,16 +9,11 @@ namespace Half_Life_3.Entities.Obstacles
     class Explosive : Obstacle
     {
         /// <summary>
-        /// Damage this obstacle can sustain before it explodes
-        /// </summary>
-        public float Health { get; private set; }
-
-        /// <summary>
         /// True if explosive sustains any damage
         /// </summary>
         public bool IsBurning { get; private set; }
 
-        public Explosive(string name, int x, int y, int width, int height) : base(name, x, y, width, height)
+        public Explosive(string name, int x, int y, int width, int height) : base(name, x, y, width, height, false)
         {
             Type = EntityType.Explosive;
             IsInteractable = true;
@@ -29,7 +24,7 @@ namespace Half_Life_3.Entities.Obstacles
             AddUpdater(Explode);
         }
 
-        public Explosive(string name, Rectangle boundingBox) : base(name, boundingBox)
+        public Explosive(string name, Rectangle boundingBox) : base(name, boundingBox, false)
         {
             Type = EntityType.Explosive;
             IsInteractable = true;
@@ -46,7 +41,7 @@ namespace Half_Life_3.Entities.Obstacles
             }
         }
 
-        public void UpdateHealth(int damage)
+        public new void TakeDamage(int damage)
         {
             Health -= damage;
             if (Health < 10)
@@ -60,7 +55,7 @@ namespace Half_Life_3.Entities.Obstacles
             if (Health <= 0)
             {
                 // Animate explosions
-                // Deal Radial Damage
+                Game1.EntManager.DealDamage(this);
             }
         }
     }

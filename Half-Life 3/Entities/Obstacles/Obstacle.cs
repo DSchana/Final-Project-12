@@ -14,18 +14,18 @@ namespace Half_Life_3.Entities.Obstacles
         /// </summary>
         public bool IsInteractable { get; internal set; }
 
-        public Obstacle(string name, int x, int y, int width, int height) : base(name)
+        public Obstacle(string name, int x, int y, int width, int height, bool indestructible = true) : base(name)
         {
             Type = EntityType.Obstacle;
+            Indestructible = indestructible;
             BoundingBox = new Rectangle(x, y, width, height);
-            Rotation = 0;
         }
 
-        public Obstacle(string name, Rectangle boundingBox) : base(name)
+        public Obstacle(string name, Rectangle boundingBox, bool indestructible = true) : base(name)
         {
             Type = EntityType.Obstacle;
+            Indestructible = indestructible;
             BoundingBox = boundingBox;
-            Rotation = 0;
         }
     }
 }

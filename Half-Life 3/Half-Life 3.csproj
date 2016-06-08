@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\EntityType.cs" />
     <Compile Include="Menu\Button.cs" />
     <Compile Include="Entities\Characters\Character.cs" />
     <Compile Include="Entities\EntityManager.cs" />
