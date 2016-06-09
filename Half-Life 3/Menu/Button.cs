@@ -1,6 +1,8 @@
 ﻿using Artemis.Engine;
+using Artemis.Engine.Assets;
 using Artemis.Engine.Input;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +33,11 @@ namespace Half_Life_3.Menu
         public Rectangle BoundingBox { get; private set; }
 
         /// <summary>
+        /// Image displayed of button
+        /// </summary>
+        public Texture2D Texture { get; private set; }
+
+        /// <summary>
         /// The action called when button is triggered
         /// </summary>
         public Action ActivatedAction { get; private set; }
@@ -40,6 +47,7 @@ namespace Half_Life_3.Menu
             MouseIn = new MouseInput();
             BoundingBox = new Rectangle(x, y, width, height);
             Position = new Vector2(x, y);
+            Texture = AssetLoader.Load<Texture2D>(@"Resources\Menu\" + lable + ".png", false);
         }
 
         public Button(string lable, Rectangle boundingBox) : base(lable)
@@ -47,6 +55,7 @@ namespace Half_Life_3.Menu
             MouseIn = new MouseInput();
             BoundingBox = boundingBox;
             Position = new Vector2(BoundingBox.X, BoundingBox.Y);
+            Texture = AssetLoader.Load<Texture2D>(@"Resources\Menu\" + lable + ".png", false);
         }
 
         public Button(string lable, int x, int y, int width, int height, Action action) : base(lable)
@@ -55,6 +64,7 @@ namespace Half_Life_3.Menu
             BoundingBox = new Rectangle(x, y, width, height);
             Position = new Vector2(x, y);
             ActivatedAction = action;
+            Texture = AssetLoader.Load<Texture2D>(@"Resources\Menu\" + lable + ".png", false);
         }
 
         public Button(string lable, Rectangle boundingBox, Action action) : base(lable)
@@ -63,6 +73,7 @@ namespace Half_Life_3.Menu
             BoundingBox = boundingBox;
             Position = new Vector2(BoundingBox.X, BoundingBox.Y);
             ActivatedAction = action;
+            Texture = AssetLoader.Load<Texture2D>(@"Resources\Menu\" + lable + ".png", false);
         }
 
         public void AddAction(Action action)
@@ -84,6 +95,11 @@ namespace Half_Life_3.Menu
             {
                 ActivatedAction();
             }
+        }
+
+        public void Show()
+        {
+            ArtemisEngine.RenderPipeline.Render(Texture, Position);
         }
     }
 }

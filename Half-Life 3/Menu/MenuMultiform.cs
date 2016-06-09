@@ -27,7 +27,7 @@ namespace Half_Life_3.Menu
 
         public override void Construct(MultiformConstructionArgs args)
         {
-            ButtonForm = new PositionalForm("Buttons");
+            // ButtonForm = new PositionalForm("Buttons");
             Buttons = new List<Button>();
 
             Buttons.Add(new Button("New Game", 100, 600, 300, 50, NewGame));    // Dimensions and location not right
@@ -35,18 +35,20 @@ namespace Half_Life_3.Menu
             Buttons.Add(new Button("Options", 100, 1000, 300, 50, Options));
             Buttons.Add(new Button("Quit", 100, 1200, 300, 50, Quit));
 
+            /*
             // Attach Fixins from data in button objects
             foreach (var button in Buttons)
             {
                 // Texture2D.FromStream(ArtemisEngine.RenderPipeline.GraphicsDevice, new FileStream("..\\..\\..\\Resources\\Menu\\" + button.Name + ".png", FileMode.Open))
                 // AssetLoader.Load<Texture2D>("Resources\\Menu\\" + button.Name + ".png", false)
-                ButtonForm.AttachFixin(new TextureFixin(button.Name, AssetLoader.Load<Texture2D>("Resources\\Menu\\" + button.Name + ".png", false), new PositionalForm(button.Position)));
+                ButtonForm.AttachFixin(new TextureFixin(button.Name, AssetLoader.Load<Texture2D>(@"Resources\Menu\" + button.Name + ".png", false), new PositionalForm(button.Position)));
             }
+            */
 
             SetUpdater(MainUpdater);
             SetRenderer(MainRenderer);
 
-            AddForm(ButtonForm);
+            // AddForm(ButtonForm);
         }
 
         private void MainUpdater()
@@ -59,7 +61,10 @@ namespace Half_Life_3.Menu
 
         private void MainRenderer()
         {
-            ButtonForm.Render();
+            foreach (var button in Buttons)
+            {
+                button.Show();
+            }
         }
 
         // Button click actions
