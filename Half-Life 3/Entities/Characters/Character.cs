@@ -2,6 +2,7 @@
 using Artemis.Engine.Graphics;
 using Artemis.Engine.Graphics.Animation;
 using Half_Life_3.Entities.Weapons;
+using Half_Life_3.Entities;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -51,15 +52,14 @@ namespace Half_Life_3.Entities.Characters
         {
             Type = EntityType.Character;
             Indestructible = false;
-            AddRenderer(Show);
-        }
 
-        /// <summary>
-        /// Render character to the screen
-        /// </summary>
-        private void Show()
-        {
-            throw new NotImplementedException();
+            Sprites = new Sprite();
+            Sprites.LoadDirectory(@"Resources\Gordon Freeman\Knife");
+            Sprites.LoadDirectory(@"Resources\Gordon Freeman\MP7");
+            Sprites.LoadDirectory(@"Resources\Gordon Freeman\SPAS12");
+            Sprites.LoadDirectory(@"Resources\Gordon Freeman\USPMatch");
+
+            AddRenderer(Show);
         }
 
         /// <summary>
@@ -69,8 +69,13 @@ namespace Half_Life_3.Entities.Characters
         /// <param name="state"></param>
         public void ChangeState(string state)
         {
-            AAMLReader.Map.SetState(state);
+            Sprites.ChangeState(state);
             // Set bounding box based on sprites
+        }
+        
+        public void Show()
+        {
+            Sprites.Render(ScreenPosition, Rotation);
         }
 
         public void AddHealth(int health)

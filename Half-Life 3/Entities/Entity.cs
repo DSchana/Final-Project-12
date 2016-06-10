@@ -35,6 +35,11 @@ namespace Half_Life_3.Entities
         /// </summary>
         public float Rotation { get; internal set; }
 
+        /// <summary>
+        /// Sprite models of this entity
+        /// </summary>
+        public Sprite Sprites { get; internal set; }
+
         public Entity(string name) : base(name)
         {
             Type = EntityType.Entity;
