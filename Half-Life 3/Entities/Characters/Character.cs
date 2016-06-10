@@ -54,10 +54,10 @@ namespace Half_Life_3.Entities.Characters
             Indestructible = false;
 
             Sprites = new Sprite();
-            Sprites.LoadDirectory(@"Resources\Gordon Freeman\Knife");
-            Sprites.LoadDirectory(@"Resources\Gordon Freeman\MP7");
-            Sprites.LoadDirectory(@"Resources\Gordon Freeman\SPAS12");
-            Sprites.LoadDirectory(@"Resources\Gordon Freeman\USPMatch");
+            //Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\Knife");
+            Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\MP7");
+            Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\SPAS12");
+            Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\USPMatch");
 
             AddRenderer(Show);
         }
@@ -69,7 +69,7 @@ namespace Half_Life_3.Entities.Characters
         /// <param name="state"></param>
         public void ChangeState(string state)
         {
-            Sprites.ChangeState(state);
+            Sprites.ChangeState(CurrentWeapon + state);
             // Set bounding box based on sprites
         }
         

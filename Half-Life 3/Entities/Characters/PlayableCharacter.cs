@@ -12,8 +12,8 @@ namespace Half_Life_3.Entities.Characters
 {
     class PlayableCharacter : Character
     {
-        private KeyboardInput keyIn = new KeyboardInput();
-        private MouseInput mouseIn = new MouseInput();
+        private KeyboardInput KeyIn = new KeyboardInput();
+        private MouseInput MouseIn = new MouseInput();
 
         // TODO: Populate
         public List<Weapon> Weapons { get; private set; }
@@ -27,14 +27,47 @@ namespace Half_Life_3.Entities.Characters
 
             SetMaxHealth(100);
 
+            AddUpdater(UpdateWeapon);
             AddUpdater(Rotate);
             AddUpdater(Move);
             AddUpdater(Attack);
         }
 
+        public void UpdateWeapon()
+        {
+            if (KeyIn.IsClicked(Keys.D1))
+            {
+                ChangeWeapon(0);
+            }
+            else if (KeyIn.IsClicked(Keys.D2))
+            {
+                ChangeWeapon(1);
+            }
+            else if (KeyIn.IsClicked(Keys.D3))
+            {
+                ChangeWeapon(2);
+            }
+            else if (KeyIn.IsClicked(Keys.D4))
+            {
+                ChangeWeapon(3);
+            }
+            else if (KeyIn.IsClicked(Keys.D5))
+            {
+                ChangeWeapon(4);
+            }
+        }
+
+        public void ChangeWeapon(int weaponSlot)
+        {
+            if (weaponSlot < Weapons.Count)
+            {
+                CurrentWeapon = Weapons[weaponSlot];
+            }
+        }
+
         private void Rotate()
         {
-            Vector2 direction = mouseIn.PositionVector - ScreenPosition;
+            Vector2 direction = MouseIn.PositionVector - ScreenPosition;
             direction.Normalize();
 
             Rotation = (float)Math.Atan2(direction.Y, direction.X);
@@ -45,25 +78,25 @@ namespace Half_Life_3.Entities.Characters
             bool isMoving = false;
             Vector2 NewWorldPosition = new Vector2(WorldPosition.X, WorldPosition.Y);
 
-            if (keyIn.IsHeld(Keys.W))
+            if (KeyIn.IsHeld(Keys.W))
             {
                 isMoving = true;
                 NewWorldPosition.X += (float)(Speed * Math.Cos(Rotation));
                 NewWorldPosition.Y += (float)(Speed * Math.Sin(Rotation));
             }
-            if (keyIn.IsHeld(Keys.A))
+            if (KeyIn.IsHeld(Keys.A))
             {
                 isMoving = true;
                 NewWorldPosition.X -= (float)(Speed * Math.Cos(Rotation + 90));
                 NewWorldPosition.Y -= (float)(Speed * Math.Sin(Rotation + 90));
             }
-            if (keyIn.IsHeld(Keys.S))
+            if (KeyIn.IsHeld(Keys.S))
             {
                 isMoving = true;
                 NewWorldPosition.X -= (float)(Speed * Math.Cos(Rotation));
                 NewWorldPosition.Y -= (float)(Speed * Math.Sin(Rotation));
             }
-            if (keyIn.IsHeld(Keys.D))
+            if (KeyIn.IsHeld(Keys.D))
             {
                 isMoving = true;
                 NewWorldPosition.X += (float)(Speed * Math.Cos(Rotation + 90));
@@ -84,12 +117,12 @@ namespace Half_Life_3.Entities.Characters
 
         private void Attack()
         {
-            ChangeState("Attack");
-            if (mouseIn.IsClicked(MouseButton.Left) && CurrentWeapon.ClipAmmo > 0)
+            //ChangeState("Attack");
+            if (MouseIn.IsClicked(MouseButton.Left) && CurrentWeapon.ClipAmmo > 0)
             {
                 CurrentWeapon.Fire();
             }
-            else if (mouseIn.IsClicked(MouseButton.Right))
+            else if (MouseIn.IsClicked(MouseButton.Right))
             {
                 CurrentWeapon.Fire(DamageType.Melee);
             }

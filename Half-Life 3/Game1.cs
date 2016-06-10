@@ -24,7 +24,6 @@ namespace Half_Life_3
         public void Run()
         {
             // Rendering
-            Freeman.Render();
         }
     }
 }
