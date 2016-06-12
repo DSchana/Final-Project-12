@@ -76,11 +76,11 @@ namespace Half_Life_3.Entities.Characters
 
             if (isMoving)
             {
-                ChangeState("Move");
+                ChangeState("move");
             }
             else
             {
-                ChangeState("Idle");
+                ChangeState("idle");
             }
         }
 

@@ -36,9 +36,7 @@ namespace Half_Life_3
         /// </summary>
         static void Run()
         {
-            Console.WriteLine("Running");
             Game1 game = new Game1();
-            game.Run();
         }
     }
 #endif

@@ -1,4 +1,4 @@
-﻿using Artemis.Engine.Graphics.Animation;
+﻿using Artemis.Engine;
 using Artemis.Engine.Input;
 using Half_Life_3.Entities.Weapons;
 using Microsoft.Xna.Framework.Input;
@@ -18,12 +18,22 @@ namespace Half_Life_3.Entities.Characters
         // TODO: Populate
         public List<Weapon> Weapons { get; private set; }
 
-        public PlayableCharacter(string name, string AnimationFileName) : base(name)
+        public PlayableCharacter(string name) : base(name)
         {
+            ScreenPosition = new Vector2(ArtemisEngine.DisplayManager.WindowResolution.Width / 2, ArtemisEngine.DisplayManager.WindowResolution.Height / 2);
+
+            Weapons = new List<Weapon>();
+
+            Weapons.Add(new Weapon("USPMatch", this, WeaponType.USPMatch));
+            Weapons.Add(new Weapon("MP7", this, WeaponType.MP7));
+            Weapons.Add(new Weapon("SPAS12", this, WeaponType.SPAS12));
+            Weapons.Add(new Weapon("Knife", this, WeaponType.Knife));  // Probably take this away from dr.freeman
+
+            ChangeWeapon(0);
+
             Type = EntityType.PlayableCharacter;
             IsPlayable = true;
             Weapons = new List<Weapon>();
-            AAMLReader = new AAMLFileReader(AnimationFileName);
 
             SetMaxHealth(100);
 
@@ -105,11 +115,11 @@ namespace Half_Life_3.Entities.Characters
 
             if (isMoving)
             {
-                ChangeState("Move");
+                ChangeState("move");
             }
             else
             {
-                ChangeState("Idle");
+                ChangeState("idle");
             }
 
             WorldPosition = NewWorldPosition;

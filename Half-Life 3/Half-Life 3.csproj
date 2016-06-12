@@ -499,10 +499,10 @@
     <Content Include="Resources\Gordon Freeman\USPMatch\shoot\freeman-shoot_handgun_2.png" />
     <Content Include="Resources\Lambda small.png" />
     <Content Include="Resources\Lambda.png" />
+    <Content Include="Resources\Menu\background 1.jpg" />
     <Content Include="Resources\Menu\background 2.jpg" />
     <Content Include="Resources\Menu\background 3.jpg" />
     <Content Include="Resources\Menu\background 4.jpg" />
-    <Content Include="Resources\Menu\Background.jpg" />
     <Content Include="Resources\Menu\idk looked cool dont use in game.png" />
     <Content Include="Resources\Menu\Load Game.png" />
     <Content Include="Resources\Menu\New Game.png" />
@@ -515,6 +515,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Fonts\HalfLife.ttf" />
+    <None Include="game.constants" />
     <None Include="Resources\Menu\idk looked cool dont use in game.psd" />
     <None Include="Resources\Menu\Load Game.psd" />
     <None Include="Resources\Menu\New Game.psd" />

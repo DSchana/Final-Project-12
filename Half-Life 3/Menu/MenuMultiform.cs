@@ -23,17 +23,42 @@ namespace Half_Life_3.Menu
         /// </summary>
         public PositionalForm ButtonForm { get; private set; }
 
+        /// <summary>
+        /// Buttons displayed on this menu
+        /// </summary>
         public List<Button> Buttons { get; private set; }
+
+        /// <summary>
+        /// Background of menu
+        /// </summary>
+        public Texture2D Background { get; private set; }
+
+        /// <summary>
+        /// Half-Life 3 Title Image
+        /// </summary>
+        public Texture2D Title { get; private set; }
+
+        /// <summary>
+        /// Cursor image
+        /// </summary>
+        public Texture2D Cursor { get; private set; }
+
+        private Random rnd = new Random();
 
         public override void Construct(MultiformConstructionArgs args)
         {
             // ButtonForm = new PositionalForm("Buttons");
+            // TODO: Change the range
+            Background = AssetLoader.Load<Texture2D>(@"Resources\Menu\background " + rnd.Next(1, 5) + ".jpg", false);
+            Cursor = AssetLoader.Load<Texture2D>(@"Resources\Cursor.png", false);
+            Title = AssetLoader.Load<Texture2D>(@"Resources\Menu\Title.png", false);
+
             Buttons = new List<Button>();
 
             Buttons.Add(new Button("New Game", 100, 600, 300, 50, NewGame));    // Dimensions and location not right
-            Buttons.Add(new Button("Load Game", 100, 800, 300, 50, LoadGame));  // TODO: Fix that shit
-            Buttons.Add(new Button("Options", 100, 1000, 300, 50, Options));
-            Buttons.Add(new Button("Quit", 100, 1200, 300, 50, Quit));
+            Buttons.Add(new Button("Load Game", 100, 650, 300, 50, LoadGame));  // TODO: Fix that shit
+            Buttons.Add(new Button("Options", 100, 700, 300, 50, Options));
+            Buttons.Add(new Button("Quit", 100, 750, 300, 50, Quit));
 
             /*
             // Attach Fixins from data in button objects
@@ -61,10 +86,15 @@ namespace Half_Life_3.Menu
 
         private void MainRenderer()
         {
+            ArtemisEngine.RenderPipeline.Render(Background, Vector2.Zero);
+
             foreach (var button in Buttons)
             {
                 button.Show();
             }
+
+            ArtemisEngine.RenderPipeline.Render(Title, new Vector2(150, 520));
+            ArtemisEngine.RenderPipeline.Render(Cursor, ArtemisEngine.Mouse.Position.ToVector2());
         }
 
         // Button click actions
@@ -76,6 +106,8 @@ namespace Half_Life_3.Menu
             newFile.WriteLine(0);  // Rotation
 
             newFile.Close();
+
+            // TODO: Activate Game Multiform
         }
 
         private void LoadGame()
@@ -105,6 +137,8 @@ namespace Half_Life_3.Menu
             }
 
             loadFile.Close();
+
+            // TODO: Activate Game Multiform
         }
 
         private void Options()
@@ -114,6 +148,7 @@ namespace Half_Life_3.Menu
 
         private void Quit()
         {
+            Console.WriteLine("QUIT");
             Environment.ExitCode = 0;
             Environment.Exit(Environment.ExitCode);
         }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/../Resources/Gordon Freeman/USPMatch/reload/freeman-reload_handgun_5.png</SourceFile>
-  <SourceTime>2016-05-16T08:25:52.2727361-04:00</SourceTime>
+  <SourceTime>2016-06-10T17:32:38.1227269-04:00</SourceTime>
   <DestFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/bin/Windows/../Resources/Gordon Freeman/USPMatch/reload/freeman-reload_handgun_5.xnb</DestFile>
-  <DestTime>2016-06-10T13:29:24.4047443-04:00</DestTime>
+  <DestTime>2016-06-11T00:47:23.4622642-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T13:14:44-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -23,11 +23,6 @@ namespace Half_Life_3.Menu
         public bool IsHovering { get; private set; }
 
         /// <summary>
-        /// Mouse input for buttons
-        /// </summary>
-        public MouseInput MouseIn { get; private set; }
-
-        /// <summary>
         /// Collision box for Button
         /// </summary>
         public Rectangle BoundingBox { get; private set; }
@@ -44,7 +39,6 @@ namespace Half_Life_3.Menu
 
         public Button(string lable, int x, int y, int width, int height) : base(lable)
         {
-            MouseIn = new MouseInput();
             BoundingBox = new Rectangle(x, y, width, height);
             Position = new Vector2(x, y);
             Texture = AssetLoader.Load<Texture2D>(@"Resources\Menu\" + lable + ".png", false);
@@ -52,7 +46,6 @@ namespace Half_Life_3.Menu
 
         public Button(string lable, Rectangle boundingBox) : base(lable)
         {
-            MouseIn = new MouseInput();
             BoundingBox = boundingBox;
             Position = new Vector2(BoundingBox.X, BoundingBox.Y);
             Texture = AssetLoader.Load<Texture2D>(@"Resources\Menu\" + lable + ".png", false);
@@ -60,7 +53,6 @@ namespace Half_Life_3.Menu
 
         public Button(string lable, int x, int y, int width, int height, Action action) : base(lable)
         {
-            MouseIn = new MouseInput();
             BoundingBox = new Rectangle(x, y, width, height);
             Position = new Vector2(x, y);
             ActivatedAction = action;
@@ -69,7 +61,6 @@ namespace Half_Life_3.Menu
 
         public Button(string lable, Rectangle boundingBox, Action action) : base(lable)
         {
-            MouseIn = new MouseInput();
             BoundingBox = boundingBox;
             Position = new Vector2(BoundingBox.X, BoundingBox.Y);
             ActivatedAction = action;
@@ -83,7 +74,7 @@ namespace Half_Life_3.Menu
 
         public void OnButtonClicked()
         {
-            if (MouseIn.IsClicked(MouseButton.Left) && BoundingBox.Contains(MouseIn.PositionVector))
+            if (ArtemisEngine.Mouse.IsClicked(MouseButton.Left) && BoundingBox.Contains(ArtemisEngine.Mouse.Position))
             {
                 ActivatedAction();
             }
@@ -91,7 +82,7 @@ namespace Half_Life_3.Menu
 
         public void OnButtonReleased()
         {
-            if (MouseIn.IsReleased(MouseButton.Left) && BoundingBox.Contains(MouseIn.PositionVector))
+            if (ArtemisEngine.Mouse.IsReleased(MouseButton.Left) && BoundingBox.Contains(ArtemisEngine.Mouse.Position))
             {
                 ActivatedAction();
             }

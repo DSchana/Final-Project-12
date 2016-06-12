@@ -37,39 +37,62 @@ namespace Half_Life_3.Entities
         /// </summary>
         public bool IsAnimating { get; private set; }
 
+        private string[] ImageExtensions = { "png", "jpg", "jpeg" };
+
         public Sprite()
         {
             Textures = new Dictionary<string, List<Texture2D>>();
             Frame = 0;
         }
 
-        public void LoadSprites(string path)
-        {
-            string state = path.Split('\\')[path.Split('\\').Length - 1];
-            Textures[state] = new List<Texture2D>();
-
-            foreach (var imgPath in Directory.GetFiles(path))
-            {
-                Textures[state].Add(AssetLoader.Load<Texture2D>(imgPath, false));
-            }
-        }
-
         public void LoadImage(string path, string stateName)
         {
             string state = stateName;
-            Textures.Add(state, new List<Texture2D>());
-            Textures[state].Add(AssetLoader.Load<Texture2D>(path, false));
+
+            if (!Textures.ContainsKey(state))
+            {
+                Textures.Add(state, new List<Texture2D>());
+            }
+
+            if (ImageExtensions.Contains(Path.GetExtension(path).ToLower()))
+            {
+                Textures[state].Add(AssetLoader.Load<Texture2D>(path.Substring(path.IndexOf('\\') + 1), false));
+            }
+        }
+
+        public void LoadSprites(string path)
+        {
+            string state = path.Split('\\')[path.Split('\\').Length - 1];
+
+            if (!Textures.ContainsKey(state))
+            {
+                Textures[state] = new List<Texture2D>();
+            }
+
+            foreach (var imgPath in Directory.GetFiles(path))
+            {
+                if (ImageExtensions.Contains(Path.GetExtension(imgPath).ToLower()))
+                {
+                    Textures[state].Add(AssetLoader.Load<Texture2D>(imgPath, false));
+                }
+            }
         }
 
         public void LoadSprites(string path, string stateName)
         {
             string state = stateName + path.Split('\\')[path.Split('\\').Length - 1];  // state is in the form  WeaponState
 
-            Textures.Add(state, new List<Texture2D>());
+            if (!Textures.ContainsKey(state))
+            {
+                Textures.Add(state, new List<Texture2D>());
+            }
 
             foreach (var imgPath in Directory.GetFiles(path))
             {
-                Textures[state].Add(AssetLoader.Load<Texture2D>(imgPath, false));
+                if (ImageExtensions.Contains(Path.GetExtension(imgPath).ToLower()))
+                {
+                    Textures[state].Add(AssetLoader.Load<Texture2D>(imgPath.Substring(imgPath.IndexOf('\\') + 1), false));
+                }
             }
         }
 
@@ -77,7 +100,7 @@ namespace Half_Life_3.Entities
         {
             foreach (var dirPath in Directory.GetDirectories(path))
             {
-                LoadSprites(dirPath, dirPath.Split('\\')[dirPath.Split('\\').Length - 1]);
+                LoadSprites(dirPath, path.Split('\\')[path.Split('\\').Length - 1]);
             }
         }
 

@@ -20,6 +20,16 @@ namespace Half_Life_3.Entities
         public Rectangle BoundingBox { get; internal set; }
 
         /// <summary>
+        /// Entity position relative to the world
+        /// </summary>
+        public new Vector2 WorldPosition { get; internal set; }
+
+        /// <summary>
+        /// Entity position relative to the screen
+        /// </summary>
+        public new Vector2 ScreenPosition { get; internal set; }
+
+        /// <summary>
         /// True if entity cannot be destroyed (For example, Weapons)
         /// </summary>
         public bool Indestructible { get; internal set; }
@@ -44,6 +54,13 @@ namespace Half_Life_3.Entities
         {
             Type = EntityType.Entity;
             Rotation = 0;
+
+            AddUpdater(UpdateBoundingBox);
+        }
+
+        public void UpdateBoundingBox()
+        {
+            BoundingBox = new Rectangle((int)WorldPosition.X, (int)WorldPosition.Y, BoundingBox.Width, BoundingBox.Height);
         }
 
         public void TakeDamage(int damage)

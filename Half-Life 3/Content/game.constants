@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<GameConstants>
+  <!-- Main game constants. -->
+  <Kernel>
+    <!-- The location of the Content folder. -->
+    <ContentFolder>Content</ContentFolder>
+    <!-- Whether or not the game uses a fixed time step. -->
+    <FixedTimeStep>True</FixedTimeStep>
+    <!-- The initial value of the window title. -->
+    <WindowTitle>Half-Life 3 TEST</WindowTitle>
+  </Kernel>
+
+  <!-- These are constants related to the DisplayManager. -->
+  <Display>
+    <!-- The resolution from which all IRenderables are scaled relative to. -->
+    <BaseResolution>1920x1080</BaseResolution>
+    <!-- Whether or not DisplayManager.Fullscreen can be changed. -->
+    <FullscreenTogglable>True</FullscreenTogglable>
+    <!-- Whether or not DisplayManager.MouseVisibilityTogglable can be changed. -->
+    <MouseVisibilityTogglable>True</MouseVisibilityTogglable>
+    <!-- Whether or not DisplayManager.Borderless can be changed. -->
+    <BorderTogglable>False</BorderTogglable>
+    <!-- Whether or not DisplayManager.WindowResolution can be changed. -->
+    <StaticResolution>False</StaticResolution>
+    <!-- Whether or not DisplayManager.WindowResolution can be changed to a resolution with a different aspect ratio
+         than the BaseResolution's aspect ratio. -->
+    <StaticAspectRatio>False</StaticAspectRatio>
+    <!-- Whether or not the resolution is restricted to landscape resolutions. -->
+    <OnlyLandscapeResolutions>False</OnlyLandscapeResolutions>
+    <!-- Whether or not the resolution is restricted to portrait resolutions. -->
+    <OnlyPortraitResolutions>False</OnlyPortraitResolutions>
+    <!-- The initial value of the background colour. -->
+    <BackgroundColour>Black</BackgroundColour>
+  </Display>
+
+  <!-- These are the default values of user options. They're used only if there's no
+       UserOptions file to read the option values from. -->
+  <OptionDefaults>
+    <!-- The default value of DisplayManager.Fullscreen. -->
+    <DefaultFullscreen>True</DefaultFullscreen>
+    <!-- The default value of DisplayManager.MouseVisible. -->
+    <DefaultMouseVisibility>True</DefaultMouseVisibility>
+    <!-- The default value of DisplayManager.Borderless. -->
+    <DefaultBorderless>False</DefaultBorderless>
+    <!-- The default resolution of the screen. -->
+    <DefaultResolution>1920x1080</DefaultResolution>
+    <!-- The default value of DisplayManager.VSync. -->
+    <DefautVSync>False</DefautVSync>
+    <!-- The default value of GameKernel.FrameRate. -->
+    <DefaultFrameRate>60</DefaultFrameRate>
+  </OptionDefaults>
+
+  <!-- These are constants that specify the way the physics engine works. -->
+  <Physics>
+    <!-- The number of pixels in a single "simulation" unit. This is used to convert between screen
+         coordinates (which are measured in pixels) and simulation units (which are measured in meters).
+         This value can be a float. For example, a value of 52.5 would indicate that two meters in the
+         simulation are equivalent to 105 pixels. -->
+    <PixelsPerSimUnit>64</PixelsPerSimUnit>
+  </Physics>
+
+  <!-- These are constants that aid in debugging the engine and the game. -->
+  <Debug>
+    <!-- Whether or not the UserOptions is written to a file on exiting the game. -->
+    <DisableUserOptionsWriteOnClose>True</DisableUserOptionsWriteOnClose>
+  </Debug>
+</GameConstants>

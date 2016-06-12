@@ -2,6 +2,7 @@
 using Half_Life_3.Entities.Characters;
 using Half_Life_3.Entities;
 using Half_Life_3.Menu;
+using System;
 
 namespace Half_Life_3
 {
@@ -15,15 +16,10 @@ namespace Half_Life_3
 
         public Game1()
         {
-            Freeman = new PlayableCharacter("Gordon Freeman", "Something.aaml");
+            Freeman = new PlayableCharacter("Gordon Freeman");
             EntManager = new EntityManager();
             ArtemisEngine.RegisterMultiforms(new MenuMultiform("Main Menu"));
             ArtemisEngine.StartWith("Main Menu");
-        }
-
-        public void Run()
-        {
-            // Rendering
         }
     }
 }
