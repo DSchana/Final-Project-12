@@ -18,7 +18,10 @@ namespace Half_Life_3
         {
             Freeman = new PlayableCharacter("Gordon Freeman");
             EntManager = new EntityManager();
+
             ArtemisEngine.RegisterMultiforms(new MenuMultiform("Main Menu"));
+            ArtemisEngine.RegisterMultiforms(new GameMultiform("Game"));
+
             ArtemisEngine.StartWith("Main Menu");
         }
     }

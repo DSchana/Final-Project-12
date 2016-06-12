@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/../Resources/Lambda small.png</SourceFile>
-  <SourceTime>2016-05-04T23:09:47.8595758-04:00</SourceTime>
+  <SourceTime>2016-05-05T09:09:51.337478-04:00</SourceTime>
   <DestFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/bin/Windows/../Resources/Lambda small.xnb</DestFile>
-  <DestTime>2016-06-11T00:47:26.6842177-04:00</DestTime>
+  <DestTime>2016-06-12T15:56:48.9537162-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T13:14:44-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

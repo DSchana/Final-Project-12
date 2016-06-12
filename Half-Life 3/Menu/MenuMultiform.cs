@@ -1,13 +1,13 @@
 ﻿using Artemis.Engine;
 using Artemis.Engine.Assets;
-using Artemis.Engine.Multiforms;
-using Artemis.Engine.Forms;
 using Artemis.Engine.Fixins;
+using Artemis.Engine.Forms;
+using Artemis.Engine.Multiforms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -107,7 +107,8 @@ namespace Half_Life_3.Menu
 
             newFile.Close();
 
-            // TODO: Activate Game Multiform
+            ArtemisEngine.MultiformManager.Activate(this, "Game");
+            ArtemisEngine.MultiformManager.Deactivate(this);
         }
 
         private void LoadGame()
