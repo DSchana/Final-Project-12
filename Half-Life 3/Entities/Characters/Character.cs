@@ -56,13 +56,7 @@ namespace Half_Life_3.Entities.Characters
             BoundingBox = new Rectangle((int)WorldPosition.X, (int)WorldPosition.Y, 280, 220);
 
             Sprites = new Sprite();
-
-            Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\Knife");
-            Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\MP7");
-            Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\SPAS12");
-            Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\USPMatch");
-
-            AddRenderer(Show);
+            Sprites.ToggleAlwaysAnimate();
         }
 
         /// <summary>
@@ -73,11 +67,6 @@ namespace Half_Life_3.Entities.Characters
         public void ChangeState(string state)
         {
             Sprites.ChangeState(CurrentWeapon.Name + state);
-        }
-        
-        public void Show()
-        {
-            Sprites.Render(ScreenPosition, Rotation);
         }
 
         public void AddHealth(int health)

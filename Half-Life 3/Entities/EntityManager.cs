@@ -270,5 +270,21 @@ namespace Half_Life_3.Entities
                 }
             }
         }
+
+        public void Update()
+        {
+            foreach (var entity in Entities.Values)
+            {
+                entity.Sprites.Update();
+            }
+        }
+
+        public void Render()
+        {
+            foreach (var entity in Entities.Values)
+            {
+                entity.Show();
+            }
+        }
     }
 }

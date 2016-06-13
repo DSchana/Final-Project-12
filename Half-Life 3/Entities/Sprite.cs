@@ -37,11 +37,18 @@ namespace Half_Life_3.Entities
         /// </summary>
         public bool IsAnimating { get; private set; }
 
-        private string[] ImageExtensions = { "png", "jpg", "jpeg" };
+        /// <summary>
+        /// True if the sprites are always animating
+        /// </summary>
+        public bool AlwaysAnimating { get; private set; }
+
+        private string[] ImageExtensions = { ".png", ".jpg", ".jpeg" };
 
         public Sprite()
         {
             Textures = new Dictionary<string, List<Texture2D>>();
+            IsAnimating = false;
+            AlwaysAnimating = false;
             Frame = 0;
         }
 
@@ -111,11 +118,18 @@ namespace Half_Life_3.Entities
                 Frame += FrameRate;
             }
 
-            if (Frame >= Textures[CurrentState].Count && IsAnimating)
+            if (Frame >= Textures[CurrentState].Count)
             {
                 Frame = 0;
-                IsAnimating = false;
+
+                if (!AlwaysAnimating)
+                    IsAnimating = false;
             }
+        }
+
+        public void ToggleAlwaysAnimate()
+        {
+            AlwaysAnimating = !AlwaysAnimating;
         }
 
         public void Animate()
@@ -140,7 +154,7 @@ namespace Half_Life_3.Entities
 
         public void Render(Vector2 position, double rotation)
         {
-            ArtemisEngine.RenderPipeline.Render(Textures[CurrentState][(int)Frame], position, null, null, rotation);
+            ArtemisEngine.RenderPipeline.Render(Textures[CurrentState][(int)Math.Floor(Frame)], position, null, null, rotation);
         }
     }
 }

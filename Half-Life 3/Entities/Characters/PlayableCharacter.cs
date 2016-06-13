@@ -12,14 +12,11 @@ namespace Half_Life_3.Entities.Characters
 {
     class PlayableCharacter : Character
     {
-        private KeyboardInput KeyIn = new KeyboardInput();
-        private MouseInput MouseIn = new MouseInput();
-
-        // TODO: Populate
         public List<Weapon> Weapons { get; private set; }
 
         public PlayableCharacter(string name) : base(name)
         {
+            Console.WriteLine("\nMAKING FREEMAN");
             ScreenPosition = new Vector2(ArtemisEngine.DisplayManager.WindowResolution.Width / 2, ArtemisEngine.DisplayManager.WindowResolution.Height / 2);
 
             Weapons = new List<Weapon>();
@@ -33,7 +30,6 @@ namespace Half_Life_3.Entities.Characters
 
             Type = EntityType.PlayableCharacter;
             IsPlayable = true;
-            Weapons = new List<Weapon>();
 
             SetMaxHealth(100);
 
@@ -41,27 +37,34 @@ namespace Half_Life_3.Entities.Characters
             AddUpdater(Rotate);
             AddUpdater(Move);
             AddUpdater(Attack);
+
+            Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\Knife");
+            Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\MP7");
+            Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\SPAS12");
+            Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\USPMatch");
+
+            Console.WriteLine("MADE FREEMAN\n");
         }
 
         public void UpdateWeapon()
         {
-            if (KeyIn.IsClicked(Keys.D1))
+            if (ArtemisEngine.Keyboard.IsClicked(Keys.D1))      // UPSMatch
             {
                 ChangeWeapon(0);
             }
-            else if (KeyIn.IsClicked(Keys.D2))
+            else if (ArtemisEngine.Keyboard.IsClicked(Keys.D2))  // MP7
             {
                 ChangeWeapon(1);
             }
-            else if (KeyIn.IsClicked(Keys.D3))
+            else if (ArtemisEngine.Keyboard.IsClicked(Keys.D3))  // SPAS12
             {
                 ChangeWeapon(2);
             }
-            else if (KeyIn.IsClicked(Keys.D4))
+            else if (ArtemisEngine.Keyboard.IsClicked(Keys.D4))  //  Knife
             {
                 ChangeWeapon(3);
             }
-            else if (KeyIn.IsClicked(Keys.D5))
+            else if (ArtemisEngine.Keyboard.IsClicked(Keys.D5))  // Nothing Yet
             {
                 ChangeWeapon(4);
             }
@@ -69,15 +72,18 @@ namespace Half_Life_3.Entities.Characters
 
         public void ChangeWeapon(int weaponSlot)
         {
+            Console.WriteLine(weaponSlot + " " + Weapons.Count);
             if (weaponSlot < Weapons.Count)
             {
+                Console.WriteLine("CHANGING WEAPON");
                 CurrentWeapon = Weapons[weaponSlot];
+                Console.WriteLine(CurrentWeapon.Name);
             }
         }
 
         private void Rotate()
         {
-            Vector2 direction = MouseIn.PositionVector - ScreenPosition;
+            Vector2 direction = ArtemisEngine.Mouse.PositionVector - ScreenPosition;
             direction.Normalize();
 
             Rotation = (float)Math.Atan2(direction.Y, direction.X);
@@ -88,25 +94,25 @@ namespace Half_Life_3.Entities.Characters
             bool isMoving = false;
             Vector2 NewWorldPosition = new Vector2(WorldPosition.X, WorldPosition.Y);
 
-            if (KeyIn.IsHeld(Keys.W))
+            if (ArtemisEngine.Keyboard.IsHeld(Keys.W))
             {
                 isMoving = true;
                 NewWorldPosition.X += (float)(Speed * Math.Cos(Rotation));
                 NewWorldPosition.Y += (float)(Speed * Math.Sin(Rotation));
             }
-            if (KeyIn.IsHeld(Keys.A))
+            if (ArtemisEngine.Keyboard.IsHeld(Keys.A))
             {
                 isMoving = true;
                 NewWorldPosition.X -= (float)(Speed * Math.Cos(Rotation + 90));
                 NewWorldPosition.Y -= (float)(Speed * Math.Sin(Rotation + 90));
             }
-            if (KeyIn.IsHeld(Keys.S))
+            if (ArtemisEngine.Keyboard.IsHeld(Keys.S))
             {
                 isMoving = true;
                 NewWorldPosition.X -= (float)(Speed * Math.Cos(Rotation));
                 NewWorldPosition.Y -= (float)(Speed * Math.Sin(Rotation));
             }
-            if (KeyIn.IsHeld(Keys.D))
+            if (ArtemisEngine.Keyboard.IsHeld(Keys.D))
             {
                 isMoving = true;
                 NewWorldPosition.X += (float)(Speed * Math.Cos(Rotation + 90));
@@ -127,12 +133,12 @@ namespace Half_Life_3.Entities.Characters
 
         private void Attack()
         {
-            //ChangeState("Attack");
-            if (MouseIn.IsClicked(MouseButton.Left) && CurrentWeapon.ClipAmmo > 0)
+            ChangeState("shoot");
+            if (ArtemisEngine.Mouse.IsClicked(MouseButton.Left) && CurrentWeapon.ClipAmmo > 0)
             {
                 CurrentWeapon.Fire();
             }
-            else if (MouseIn.IsClicked(MouseButton.Right))
+            else if (ArtemisEngine.Mouse.IsClicked(MouseButton.Right))
             {
                 CurrentWeapon.Fire(DamageType.Melee);
             }

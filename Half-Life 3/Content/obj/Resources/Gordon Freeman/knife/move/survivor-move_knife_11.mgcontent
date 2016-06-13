@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/../Resources/Gordon Freeman/knife/move/survivor-move_knife_11.png</SourceFile>
-  <SourceTime>2016-04-28T13:11:04.0571255-04:00</SourceTime>
+  <SourceTime>2016-05-04T22:20:04.5773302-04:00</SourceTime>
   <DestFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/bin/Windows/../Resources/Gordon Freeman/knife/move/survivor-move_knife_11.xnb</DestFile>
-  <DestTime>2016-06-12T15:56:20.1524787-04:00</DestTime>
+  <DestTime>2016-06-12T22:30:04.5670569-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T13:14:44-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

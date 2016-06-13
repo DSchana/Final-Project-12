@@ -74,5 +74,10 @@ namespace Half_Life_3.Entities
                 Kill();
             }
         }
+
+        public void Show()
+        {
+            Sprites.Render(ScreenPosition, Rotation);
+        }
     }
 }

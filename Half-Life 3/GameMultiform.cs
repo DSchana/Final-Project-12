@@ -14,7 +14,21 @@ namespace Half_Life_3
         public override void Construct(MultiformConstructionArgs args)
         {
             Console.WriteLine("LET THE GAMES BEGIN");
-            throw new NotImplementedException();
+
+            AddUpdater(MainUpdater);
+            AddRenderer(MainRenderer);
+        }
+
+        public void MainUpdater()
+        {
+            // Move the map around here
+            // Probably manage the story or call another thing to do that
+            Game1.EntManager.Update();
+        }
+
+        public void MainRenderer()
+        {
+            Game1.EntManager.Render();
         }
     }
 }
