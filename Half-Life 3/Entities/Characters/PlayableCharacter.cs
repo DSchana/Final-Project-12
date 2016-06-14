@@ -26,22 +26,27 @@ namespace Half_Life_3.Entities.Characters
             Weapons.Add(new Weapon("SPAS12", this, WeaponType.SPAS12));
             Weapons.Add(new Weapon("Knife", this, WeaponType.Knife));  // Probably take this away from dr.freeman
 
-            ChangeWeapon(0);
+            CurrentWeapon = Weapons[0];
 
             Type = EntityType.PlayableCharacter;
             IsPlayable = true;
 
             SetMaxHealth(100);
 
-            AddUpdater(UpdateWeapon);
-            AddUpdater(Rotate);
-            AddUpdater(Move);
-            AddUpdater(Attack);
+            Sprites = new Sprite();
+            Sprites.ToggleAlwaysAnimate();
 
             Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\Knife");
             Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\MP7");
             Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\SPAS12");
             Sprites.LoadDirectory(@"Content\Resources\Gordon Freeman\USPMatch");
+
+            ChangeState("idle");
+
+            AddUpdater(UpdateWeapon);
+            AddUpdater(Rotate);
+            AddUpdater(Move);
+            AddUpdater(Attack);
 
             Console.WriteLine("MADE FREEMAN\n");
         }
@@ -72,12 +77,10 @@ namespace Half_Life_3.Entities.Characters
 
         public void ChangeWeapon(int weaponSlot)
         {
-            Console.WriteLine(weaponSlot + " " + Weapons.Count);
-            if (weaponSlot < Weapons.Count)
+            Console.WriteLine(Sprites.Attacking);
+            if (weaponSlot < Weapons.Count && !Sprites.Attacking)
             {
-                Console.WriteLine("CHANGING WEAPON");
                 CurrentWeapon = Weapons[weaponSlot];
-                Console.WriteLine(CurrentWeapon.Name);
             }
         }
 
@@ -119,11 +122,11 @@ namespace Half_Life_3.Entities.Characters
                 NewWorldPosition.Y += (float)(Speed * Math.Sin(Rotation + 90));
             }
 
-            if (isMoving)
+            if (isMoving && !Sprites.CurrentState.Contains("move"))
             {
                 ChangeState("move");
             }
-            else
+            else if (!Sprites.CurrentState.Contains("idle"))
             {
                 ChangeState("idle");
             }
@@ -133,13 +136,16 @@ namespace Half_Life_3.Entities.Characters
 
         private void Attack()
         {
-            ChangeState("shoot");
-            if (ArtemisEngine.Mouse.IsClicked(MouseButton.Left) && CurrentWeapon.ClipAmmo > 0)
+            if (ArtemisEngine.Mouse.IsClicked(MouseButton.Left) && CurrentWeapon.ClipAmmo > 0 && !Sprites.CurrentState.Contains("shoot"))
             {
+                Attacking = true;
+                ChangeState("shoot");
                 CurrentWeapon.Fire();
             }
-            else if (ArtemisEngine.Mouse.IsClicked(MouseButton.Right))
+            else if (ArtemisEngine.Mouse.IsClicked(MouseButton.Right) && !Sprites.CurrentState.Contains("meleeattack"))
             {
+                Attacking = true;
+                ChangeState("meleeattack");
                 CurrentWeapon.Fire(DamageType.Melee);
             }
         }

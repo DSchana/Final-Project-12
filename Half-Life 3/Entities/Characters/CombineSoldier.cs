@@ -43,6 +43,10 @@ namespace Half_Life_3.Entities.Characters
                 CurrentWeapon = new Weapon("S_USP", this, WeaponType.USPMatch);
             }
 
+            Sprites = new Sprite();
+            Sprites.ToggleAlwaysAnimate();
+            ChangeState("idle");
+
             AddUpdater(Rotate);
             AddUpdater(Move);
             AddUpdater(Attack);

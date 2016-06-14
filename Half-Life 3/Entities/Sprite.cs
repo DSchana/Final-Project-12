@@ -30,12 +30,17 @@ namespace Half_Life_3.Entities
         /// <summary>
         /// The rate at which Frame is changed
         /// </summary>
-        public float FrameRate { get; private set; }
+        public float FrameRate { get; set; }
 
         /// <summary>
         /// True if animation is happening
         /// </summary>
         public bool IsAnimating { get; private set; }
+
+        /// <summary>
+        /// True if the entity is attacking (only for characters)
+        /// </summary>
+        public bool Attacking { get; private set; }
 
         /// <summary>
         /// True if the sprites are always animating
@@ -49,7 +54,9 @@ namespace Half_Life_3.Entities
             Textures = new Dictionary<string, List<Texture2D>>();
             IsAnimating = false;
             AlwaysAnimating = false;
+            Attacking = false;
             Frame = 0;
+            FrameRate = 0.2f;
         }
 
         public void LoadImage(string path, string stateName)
@@ -124,12 +131,18 @@ namespace Half_Life_3.Entities
 
                 if (!AlwaysAnimating)
                     IsAnimating = false;
+
+                if (Attacking)
+                    Console.WriteLine("DONE ATTACKING");
+                    Attacking = false;
             }
         }
 
         public void ToggleAlwaysAnimate()
         {
             AlwaysAnimating = !AlwaysAnimating;
+            if (AlwaysAnimating)
+                IsAnimating = true;
         }
 
         public void Animate()
@@ -149,7 +162,16 @@ namespace Half_Life_3.Entities
             if (!Textures.ContainsKey(stateName))
                 throw new KeyNotFoundException(String.Format("State wiith name: '{0}' does not exist", stateName));
 
-            CurrentState = stateName;
+            if (!Attacking)
+            {
+                CurrentState = stateName;
+                Frame = 0;
+            }
+
+            if (CurrentState.Contains("attack") && !Attacking || CurrentState.Contains("meleeattack") && !Attacking)
+            {
+                Attacking = true;
+            }
         }
 
         public void Render(Vector2 position, double rotation)

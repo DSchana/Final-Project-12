@@ -107,6 +107,9 @@ namespace Half_Life_3.Menu
 
             newFile.Close();
 
+            RemoveUpdater(MainUpdater);
+            RemoveRenderer(MainRenderer);
+
             ArtemisEngine.MultiformManager.Activate(this, "Game");
             ArtemisEngine.MultiformManager.Deactivate(this);
         }
