@@ -56,7 +56,7 @@ namespace Half_Life_3.Entities
             AlwaysAnimating = false;
             Attacking = false;
             Frame = 0;
-            FrameRate = 0.2f;
+            FrameRate = 0.25f;
         }
 
         public void LoadImage(string path, string stateName)
@@ -123,18 +123,17 @@ namespace Half_Life_3.Entities
             if (IsAnimating)
             {
                 Frame += FrameRate;
-            }
 
-            if (Frame >= Textures[CurrentState].Count)
-            {
-                Frame = 0;
+                if (Math.Floor(Frame) >= Textures[CurrentState].Count)
+                {
+                    Frame = 0;
 
-                if (!AlwaysAnimating)
-                    IsAnimating = false;
+                    if (!AlwaysAnimating)
+                        IsAnimating = false;
 
-                if (Attacking)
-                    Console.WriteLine("DONE ATTACKING");
-                    Attacking = false;
+                    if (Attacking)
+                        Attacking = false;
+                }
             }
         }
 
@@ -176,6 +175,7 @@ namespace Half_Life_3.Entities
 
         public void Render(Vector2 position, double rotation)
         {
+            Console.WriteLine(CurrentState + ": " + Math.Floor(Frame));
             ArtemisEngine.RenderPipeline.Render(Textures[CurrentState][(int)Math.Floor(Frame)], position, null, null, rotation);
         }
     }

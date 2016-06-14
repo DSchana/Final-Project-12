@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/../Resources/Menu/idk looked cool dont use in game.psd</SourceFile>
-  <SourceTime>2016-06-07T09:13:13.0441177-04:00</SourceTime>
+  <SourceTime>2016-06-06T21:04:06.3679088-04:00</SourceTime>
   <DestFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/bin/Windows/../Resources/Menu/idk looked cool dont use in game.xnb</DestFile>
-  <DestTime>2016-06-13T14:17:29.9250421-04:00</DestTime>
+  <DestTime>2016-06-14T01:45:28.6478925-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T13:14:44-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

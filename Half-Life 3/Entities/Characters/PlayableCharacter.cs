@@ -81,6 +81,7 @@ namespace Half_Life_3.Entities.Characters
             if (weaponSlot < Weapons.Count && !Sprites.Attacking)
             {
                 CurrentWeapon = Weapons[weaponSlot];
+                ChangeState("idle");
             }
         }
 
@@ -126,7 +127,7 @@ namespace Half_Life_3.Entities.Characters
             {
                 ChangeState("move");
             }
-            else if (!Sprites.CurrentState.Contains("idle"))
+            else if (!isMoving && !Sprites.CurrentState.Contains("idle"))
             {
                 ChangeState("idle");
             }
