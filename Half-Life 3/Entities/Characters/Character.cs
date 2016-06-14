@@ -62,6 +62,11 @@ namespace Half_Life_3.Entities.Characters
             BoundingBox = new Rectangle((int)WorldPosition.X, (int)WorldPosition.Y, 280, 220);
         }
 
+        public void Say(string words)
+        {
+            Game1.DiagManager.Write(this, words);
+        }
+
         /// <summary>
         /// Change the state in which the animation
         /// will render images from.

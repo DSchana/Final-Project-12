@@ -63,6 +63,11 @@ namespace Half_Life_3.Entities
             BoundingBox = new Rectangle((int)WorldPosition.X, (int)WorldPosition.Y, BoundingBox.Width, BoundingBox.Height);
         }
 
+        public void SetLocation(Vector2 newPos)
+        {
+            WorldPosition = newPos;
+        }
+
         public void TakeDamage(int damage)
         {
             if (!Indestructible)

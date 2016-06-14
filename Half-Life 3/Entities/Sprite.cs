@@ -175,7 +175,6 @@ namespace Half_Life_3.Entities
 
         public void Render(Vector2 position, double rotation)
         {
-            Console.WriteLine(CurrentState + ": " + Math.Floor(Frame));
             ArtemisEngine.RenderPipeline.Render(Textures[CurrentState][(int)Math.Floor(Frame)], position, null, null, rotation);
         }
     }

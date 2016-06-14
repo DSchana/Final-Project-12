@@ -1,7 +1,10 @@
 ﻿using Artemis.Engine;
+using Artemis.Engine.Assets;
 using Half_Life_3.Entities.Characters;
 using Half_Life_3.Entities;
+using Half_Life_3.Story;
 using Half_Life_3.Menu;
+using Microsoft.Xna.Framework.Media;
 using System;
 
 namespace Half_Life_3
@@ -13,11 +16,21 @@ namespace Half_Life_3
     {
         public static PlayableCharacter Freeman { get; private set; }
         public static EntityManager EntManager { get; private set; }
+        public static DialogueManager DiagManager { get; private set; }
 
         public Game1()
         {
-            Freeman = new PlayableCharacter("Gordon Freeman");
+            // Artemis intro
+            /*
+            Video video = AssetLoader.Load<Video>("Resources/artemis", false);
+            VideoPlayer player = new VideoPlayer();
+
+            player.Play(video);
+            */
+
+            Freeman = new PlayableCharacter("Gordon Freeman", 0, 0);
             EntManager = new EntityManager();
+            DiagManager = new DialogueManager();
 
             EntManager.Add(Freeman);
 

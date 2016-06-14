@@ -14,10 +14,12 @@ namespace Half_Life_3.Entities.Characters
     {
         public List<Weapon> Weapons { get; private set; }
 
-        public PlayableCharacter(string name) : base(name)
+        public PlayableCharacter(string name, int x, int y) : base(name)
         {
             Console.WriteLine("\nMAKING FREEMAN");
             ScreenPosition = new Vector2(ArtemisEngine.DisplayManager.WindowResolution.Width / 2, ArtemisEngine.DisplayManager.WindowResolution.Height / 2);
+
+            WorldPosition = new Vector2(x, y);
 
             Weapons = new List<Weapon>();
 
@@ -133,6 +135,8 @@ namespace Half_Life_3.Entities.Characters
             }
 
             WorldPosition = NewWorldPosition;
+
+            Console.WriteLine(WorldPosition);
         }
 
         private void Attack()

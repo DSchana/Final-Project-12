@@ -58,6 +58,7 @@
     <Compile Include="Entities\Weapons\Weapon.cs" />
     <Compile Include="Entities\Weapons\WeaponRange.cs" />
     <Compile Include="Entities\Weapons\WeaponType.cs" />
+    <Compile Include="Story\DialogueManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Artemis.Engine, Version=3.3.0.2238, Culture=neutral, processorArchitecture=x86">
