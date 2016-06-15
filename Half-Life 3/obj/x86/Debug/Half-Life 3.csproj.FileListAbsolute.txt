@@ -29,3 +29,5 @@ C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Arte
 C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\FarseerPhysics MonoGame.dll
 C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\FarseerPhysics MonoGame.pdb
 C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Artemis.Engine.pdb
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Resources\artemis.mp4
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Content\Resources\artemis.xnb

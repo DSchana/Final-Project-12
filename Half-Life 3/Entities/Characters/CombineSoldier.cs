@@ -15,12 +15,11 @@ namespace Half_Life_3.Entities.Characters
         /// </summary>
         public CombineType CType { get; private set; }
 
-        public Combine(string name, CombineType type, string AnimationFile) : base(name)
+        public Combine(string name, CombineType type, int x, int y) : base(name, x, y)
         {
             Name = name;
             IsPlayable = false;
             CType = type;
-            AAMLReader = new AAMLFileReader(AnimationFile);
 
             if (CType == CombineType.CivilProtection)
             {
@@ -42,10 +41,6 @@ namespace Half_Life_3.Entities.Characters
                 SetMaxHealth(25);
                 CurrentWeapon = new Weapon("S_USP", this, WeaponType.USPMatch);
             }
-
-            Sprites = new Sprite();
-            Sprites.ToggleAlwaysAnimate();
-            ChangeState("idle");
 
             AddUpdater(Rotate);
             AddUpdater(Move);

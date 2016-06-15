@@ -14,7 +14,7 @@ namespace Half_Life_3.Entities.Characters
     {
         public List<Weapon> Weapons { get; private set; }
 
-        public PlayableCharacter(string name, int x, int y) : base(name)
+        public PlayableCharacter(string name, int x, int y) : base(name, x, y)
         {
             Console.WriteLine("\nMAKING FREEMAN");
             ScreenPosition = new Vector2(ArtemisEngine.DisplayManager.WindowResolution.Width / 2, ArtemisEngine.DisplayManager.WindowResolution.Height / 2);

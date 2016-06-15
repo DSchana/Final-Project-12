@@ -1,6 +1,5 @@
 ﻿using System;
 using Artemis.Engine;
-using Artemis.Engine.Input;
 
 namespace Half_Life_3
 {

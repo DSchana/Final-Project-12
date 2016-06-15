@@ -50,10 +50,12 @@ namespace Half_Life_3.Entities
         /// </summary>
         public Sprite Sprites { get; internal set; }
 
-        public Entity(string name) : base(name)
+        public Entity(string name, int x, int y) : base(name)
         {
             Type = EntityType.Entity;
             Rotation = 0;
+
+            SetLocation(x, y);
 
             AddUpdater(UpdateBoundingBox);
         }
@@ -66,6 +68,11 @@ namespace Half_Life_3.Entities
         public void SetLocation(Vector2 newPos)
         {
             WorldPosition = newPos;
+        }
+
+        public void SetLocation(int x, int y)
+        {
+            WorldPosition = new Vector2(x, y);
         }
 
         public void TakeDamage(int damage)

@@ -8,6 +8,14 @@ using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 
+/*
+TODO:
+ - Fix rotation
+ - Automatically load sprites (for characters at least) based on name
+ - Gravity Gun, Holy shit this is big
+ - Story (Maybe do this before the previous one)
+*/
+
 namespace Half_Life_3
 {
     /// <summary>
@@ -21,12 +29,15 @@ namespace Half_Life_3
 
         public Game1()
         {
+            /*
             // Artemis intro
-            Video video = AssetLoader.Load<Video>(@"Resources\artemis.mp4", false);
+            Video video = AssetLoader.Load<Video>(@"Resources\artemis", false);
             VideoPlayer player = new VideoPlayer();
+            player.IsLooped = false;
 
             player.Play(video);
-
+            */
+            
             Freeman = new PlayableCharacter("Gordon Freeman", 0, 0);
             EntManager = new EntityManager();
             DiagManager = new DialogueManager();

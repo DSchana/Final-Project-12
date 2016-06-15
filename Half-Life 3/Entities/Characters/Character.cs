@@ -53,7 +53,7 @@ namespace Half_Life_3.Entities.Characters
         /// </summary>
         public int Speed = 5;
 
-        public Character(string name, bool indestructible = false) : base(name)
+        public Character(string name, int x, int y, bool indestructible = false) : base(name, x, y)
         {
             Type = EntityType.Character;
             Indestructible = indestructible;

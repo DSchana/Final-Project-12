@@ -71,7 +71,7 @@ namespace Half_Life_3.Entities.Weapons
 
         private Random rnd = new Random();
 
-        public Weapon(string name, Character character, WeaponType type) : base(name)
+        public Weapon(string name, Character character, WeaponType type) : base(name, (int)character.WorldPosition.X, (int)character.WorldPosition.Y)
         {
             Type = EntityType.Weapon;
             Indestructible = true;
