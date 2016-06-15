@@ -10,8 +10,6 @@ using System.Collections.Generic;
 
 /*
 TODO:
- - Fix rotation
- - Automatically load sprites (for characters at least) based on name
  - Gravity Gun, Holy shit this is big
  - Story (Maybe do this before the previous one)
 */
@@ -43,6 +41,7 @@ namespace Half_Life_3
             DiagManager = new DialogueManager();
 
             EntManager.Add(Freeman);
+            EntManager.Add(new CombineSoldier("Combine", CombineType.CivilProtection, 1000, 1000));
 
             ArtemisEngine.RegisterMultiforms(new MenuMultiform("Main Menu"));
             ArtemisEngine.RegisterMultiforms(new GameMultiform("Game"));

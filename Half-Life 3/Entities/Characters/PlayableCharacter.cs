@@ -29,6 +29,7 @@ namespace Half_Life_3.Entities.Characters
             Weapons.Add(new Weapon("Knife", this, WeaponType.Knife));  // Probably take this away from dr.freeman
 
             CurrentWeapon = Weapons[0];
+            CurrentWeapon.IsActive = true;
 
             Type = EntityType.PlayableCharacter;
             IsPlayable = true;
@@ -82,7 +83,9 @@ namespace Half_Life_3.Entities.Characters
             Console.WriteLine(Sprites.Attacking);
             if (weaponSlot < Weapons.Count && !Sprites.Attacking)
             {
+                CurrentWeapon.IsActive = false;
                 CurrentWeapon = Weapons[weaponSlot];
+                CurrentWeapon.IsActive = true;
                 ChangeState("idle");
             }
         }
@@ -135,21 +138,23 @@ namespace Half_Life_3.Entities.Characters
             }
 
             WorldPosition = NewWorldPosition;
-
-            Console.WriteLine(WorldPosition);
         }
 
         private void Attack()
         {
-            if (ArtemisEngine.Mouse.IsClicked(MouseButton.Left) && CurrentWeapon.ClipAmmo > 0 && !Sprites.CurrentState.Contains("shoot"))
+            Console.WriteLine(CurrentWeapon.ClipAmmo);
+            if (ArtemisEngine.Keyboard.IsClicked(Keys.R) && CurrentWeapon.TypeWeapon != WeaponType.Knife || CurrentWeapon.ClipAmmo <= 0 && CurrentWeapon.TypeWeapon != WeaponType.Knife)
             {
-                Attacking = true;
+                ChangeState("reload");
+                CurrentWeapon.Reload();
+            }
+            else if (ArtemisEngine.Mouse.IsClicked(MouseButton.Left) && CurrentWeapon.ClipAmmo > 0 && !Sprites.CurrentState.Contains("shoot") && CurrentWeapon.TypeWeapon != WeaponType.Knife )
+            {
                 ChangeState("shoot");
                 CurrentWeapon.Fire();
             }
             else if (ArtemisEngine.Mouse.IsClicked(MouseButton.Right) && !Sprites.CurrentState.Contains("meleeattack"))
             {
-                Attacking = true;
                 ChangeState("meleeattack");
                 CurrentWeapon.Fire(DamageType.Melee);
             }

@@ -1,4 +1,4 @@
-﻿using Artemis.Engine.Graphics.Animation;
+﻿using Artemis.Engine;
 using Half_Life_3.Entities.Weapons;
 using Microsoft.Xna.Framework;
 using System;
@@ -8,14 +8,14 @@ using System.Text;
 
 namespace Half_Life_3.Entities.Characters
 {
-    class Combine : Character
+    class CombineSoldier : Character
     {
         /// <summary>
         /// Combine overwatch type
         /// </summary>
         public CombineType CType { get; private set; }
 
-        public Combine(string name, CombineType type, int x, int y) : base(name, x, y)
+        public CombineSoldier(string name, CombineType type, int x, int y) : base(name, x, y)
         {
             Name = name;
             IsPlayable = false;
@@ -24,23 +24,33 @@ namespace Half_Life_3.Entities.Characters
             if (CType == CombineType.CivilProtection)
             {
                 SetMaxHealth(40);
-                CurrentWeapon = new Weapon("CP_USP", this, WeaponType.USPMatch);
+                CurrentWeapon = new Weapon("USP", this, WeaponType.USPMatch);
             }
             else if (CType == CombineType.OverwatchSoldier)
             {
                 SetMaxHealth(50);
-                CurrentWeapon = new Weapon("OS_MP7", this, WeaponType.MP7);
+                CurrentWeapon = new Weapon("MP7", this, WeaponType.MP7);
             }
             else if (CType == CombineType.OverwatchElite)
             {
                 SetMaxHealth(70);
-                CurrentWeapon = new Weapon("OE_MP7", this, WeaponType.MP7);
+                CurrentWeapon = new Weapon("MP7", this, WeaponType.MP7);
             }
             else if (CType == CombineType.Stalker)
             {
                 SetMaxHealth(25);
-                CurrentWeapon = new Weapon("S_USP", this, WeaponType.USPMatch);
+                CurrentWeapon = new Weapon("USP", this, WeaponType.USPMatch);
             }
+
+            CurrentWeapon.IsActive = true;
+
+            Sprites = new Sprite();
+            Sprites.ToggleAlwaysAnimate();
+            
+            Sprites.LoadDirectory(@"Content\Resources\Combine\MP7");
+            Sprites.LoadDirectory(@"Content\Resources\Combine\USP");
+
+            ChangeState("idle");
 
             AddUpdater(Rotate);
             AddUpdater(Move);
@@ -73,11 +83,14 @@ namespace Half_Life_3.Entities.Characters
                 NewWorldPosition.Y += (float)(Speed * Math.Sin(Rotation));
             }
 
-            if (isMoving)
+            WorldPosition = NewWorldPosition;
+            ScreenPosition = WorldPosition - Game1.EntManager.CameraPosition;
+
+            if (isMoving && !Sprites.CurrentState.Contains("move"))
             {
                 ChangeState("move");
             }
-            else
+            else if (!isMoving && !Sprites.CurrentState.Contains("idle"))
             {
                 ChangeState("idle");
             }
@@ -89,14 +102,15 @@ namespace Half_Life_3.Entities.Characters
         /// </summary>
         private void Attack()
         {
-            ChangeState("Attack");
             // TODO: Fire only if combine has unobstructed view of target
-            if (Math.Sqrt(Math.Pow(Math.Abs(WorldPosition.X - Game1.Freeman.WorldPosition.X), 2) + Math.Pow(Math.Abs(WorldPosition.Y - Game1.Freeman.WorldPosition.Y), 2)) <= (int)CurrentWeapon.MeleeRange)
+            if (Math.Sqrt(Math.Pow(Math.Abs(WorldPosition.X - Game1.Freeman.WorldPosition.X), 2) + Math.Pow(Math.Abs(WorldPosition.Y - Game1.Freeman.WorldPosition.Y), 2)) <= (int)CurrentWeapon.MeleeRange && !Sprites.CurrentState.Contains("meleeattack"))
             {
+                ChangeState("meleeattack");
                 CurrentWeapon.Fire(DamageType.Melee);
             }
-            else
+            else if (!Sprites.CurrentState.Contains("shoot") && CurrentWeapon.ClipAmmo > 0)
             {
+                ChangeState("shoot");
                 CurrentWeapon.Fire();
             }
         }

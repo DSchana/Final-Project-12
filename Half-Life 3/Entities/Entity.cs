@@ -1,4 +1,5 @@
-﻿using Artemis.Engine.Forms;
+﻿using Artemis.Engine;
+using Artemis.Engine.Forms;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -83,13 +84,20 @@ namespace Half_Life_3.Entities
             if (Health <= 0)
             {
                 Health = 0;
+                Game1.EntManager.Kill(Name);
                 Kill();
             }
         }
 
         public void Show()
         {
-            Sprites.Render(ScreenPosition, Rotation);
+            if (ScreenPosition.X >= 0 &&
+                ScreenPosition.Y >= 0 &&
+                ScreenPosition.X <= ArtemisEngine.DisplayManager.WindowResolution.Width &&
+                ScreenPosition.Y <= ArtemisEngine.DisplayManager.WindowResolution.Height)
+            {
+                Sprites.Render(ScreenPosition, Rotation);
+            }
         }
     }
 }

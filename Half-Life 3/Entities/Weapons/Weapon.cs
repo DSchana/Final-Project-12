@@ -122,20 +122,8 @@ namespace Half_Life_3.Entities.Weapons
             }
         }
 
-        public void CheckUpdates()
-        {
-            if (IsActive)
-            {
-                if (ClipAmmo == 0 && MaxAmmo > 0 && TypeWeapon != WeaponType.Knife)
-                {
-                    Reload();
-                }
-            }
-        }
-
         public void Reload()
         {
-            // Animate
             if (MaxAmmo > MaxClipSize)
             {
                 TotalAmmo -= MaxClipSize;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Half_Life_3.Entities.Weapons;
 using Half_Life_3.Entities.Characters;
 using Half_Life_3.Entities.Obstacles;
+using Microsoft.Xna.Framework;
 using System.Linq;
 using System.Text;
 
@@ -18,6 +19,11 @@ namespace Half_Life_3.Entities
         /// List of Characters to handle
         /// </summary>
         public Dictionary<string, Entity> Entities { get; private set; }
+
+        /// <summary>
+        /// Position of camera relative to world
+        /// </summary>
+        public Vector2 CameraPosition { get; private set; }
 
         public EntityManager()
         {
@@ -39,7 +45,7 @@ namespace Half_Life_3.Entities
             }
             catch (KeyNotFoundException e)
             {
-                throw new KeyNotFoundException(String.Format("'{0}' not a character. \nError at: \n'{1}'", name, e.Source));
+                throw new KeyNotFoundException(String.Format("'{0}' not a character. \nError at: \n'{1}'", name));
             }
         }
 
@@ -273,6 +279,7 @@ namespace Half_Life_3.Entities
 
         public void Update()
         {
+            CameraPosition = Game1.Freeman.WorldPosition - Game1.Freeman.ScreenPosition;
             foreach (var entity in Entities.Values)
             {
                 entity.Sprites.Update();

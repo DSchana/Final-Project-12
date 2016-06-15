@@ -1,5 +1,6 @@
 ﻿using Artemis.Engine;
 using Artemis.Engine.Assets;
+using Artemis.Engine.Graphics;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System;
@@ -43,6 +44,11 @@ namespace Half_Life_3.Entities
         public bool Attacking { get; private set; }
 
         /// <summary>
+        /// True if the entity is reloading
+        /// </summary>
+        public bool Reloading { get; private set; }
+
+        /// <summary>
         /// True if the sprites are always animating
         /// </summary>
         public bool AlwaysAnimating { get; private set; }
@@ -55,8 +61,9 @@ namespace Half_Life_3.Entities
             IsAnimating = false;
             AlwaysAnimating = false;
             Attacking = false;
+            Reloading = false;
             Frame = 0;
-            FrameRate = 0.25f;
+            FrameRate = 0.3f;
         }
 
         public void LoadImage(string path, string stateName)
@@ -133,6 +140,10 @@ namespace Half_Life_3.Entities
 
                     if (Attacking)
                         Attacking = false;
+
+                    if (Reloading)
+                        Reloading = false;
+                        
                 }
             }
         }
@@ -167,15 +178,20 @@ namespace Half_Life_3.Entities
                 Frame = 0;
             }
 
-            if (CurrentState.Contains("attack") && !Attacking || CurrentState.Contains("meleeattack") && !Attacking)
+            if (CurrentState.Contains("shoot") && !Attacking || CurrentState.Contains("meleeattack") && !Attacking)
             {
                 Attacking = true;
+            }
+
+            if (CurrentState.Contains("reload") && !Reloading)
+            {
+                Reloading = true;
             }
         }
 
         public void Render(Vector2 position, double rotation)
         {
-            ArtemisEngine.RenderPipeline.Render(Textures[CurrentState][(int)Math.Floor(Frame)], position, null, null, rotation);
+            ArtemisEngine.RenderPipeline.Render(Textures[CurrentState][(int)Math.Floor(Frame)], position, null, null, rotation, PositionOffsets.Center, originIsRelative: true);
         }
     }
 }

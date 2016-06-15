@@ -26,11 +26,6 @@ namespace Half_Life_3.Entities.Characters
         public bool IsPlayable { get; set; }
 
         /// <summary>
-        /// True if character is in the middle of an attack
-        /// </summary>
-        public bool Attacking { get; internal set; }
-
-        /// <summary>
         /// Max health of a character. Set automatically
         /// to be the initial health provided.
         /// </summary>
@@ -57,7 +52,6 @@ namespace Half_Life_3.Entities.Characters
         {
             Type = EntityType.Character;
             Indestructible = indestructible;
-            Attacking = false;
 
             BoundingBox = new Rectangle((int)WorldPosition.X, (int)WorldPosition.Y, 280, 220);
         }

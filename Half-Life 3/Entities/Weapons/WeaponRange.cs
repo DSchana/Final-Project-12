@@ -3,7 +3,7 @@
     public enum WeaponRange
     {
         None = 0,
-        Melee = 100,
+        Melee = 200,
         Short = 500,
         Medium = 700,
         Long = 1000
