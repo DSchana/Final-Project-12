@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/../Resources/Gordon Freeman/flashlight/move/survivor-move_flashlight_10.png</SourceFile>
-  <SourceTime>2016-04-28T13:10:59.9659606-04:00</SourceTime>
+  <SourceTime>2016-05-04T22:20:04.4697311-04:00</SourceTime>
   <DestFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/bin/Windows/../Resources/Gordon Freeman/flashlight/move/survivor-move_flashlight_10.xnb</DestFile>
-  <DestTime>2016-06-14T08:27:51.9947424-04:00</DestTime>
+  <DestTime>2016-06-14T20:23:51.0723231-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T13:14:44-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

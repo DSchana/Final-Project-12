@@ -4853,3 +4853,14 @@
 /processorParam:TextureFormat=Color
 /build:../Resources/Menu/background 5.jpg
 
+#begin hl_font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:hl_font.spritefont
+
+#begin ../Resources/artemis.mp4
+/importer:H264Importer
+/processor:VideoProcessor
+/build:../Resources/artemis.mp4
+

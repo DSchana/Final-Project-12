@@ -6,6 +6,7 @@ using Half_Life_3.Story;
 using Half_Life_3.Menu;
 using Microsoft.Xna.Framework.Media;
 using System;
+using System.Collections.Generic;
 
 namespace Half_Life_3
 {
@@ -21,12 +22,10 @@ namespace Half_Life_3
         public Game1()
         {
             // Artemis intro
-            /*
-            Video video = AssetLoader.Load<Video>("Resources/artemis", false);
+            Video video = AssetLoader.Load<Video>(@"Resources\artemis.mp4", false);
             VideoPlayer player = new VideoPlayer();
 
             player.Play(video);
-            */
 
             Freeman = new PlayableCharacter("Gordon Freeman", 0, 0);
             EntManager = new EntityManager();

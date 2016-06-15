@@ -10,7 +10,6 @@ C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Shar
 C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.XInput.dll
 C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.RawInput.dll
 C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.Direct3D9.dll
-C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Artemis.Engine.pdb
 C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\MonoGame.Framework.xml
 C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.MediaFoundation.xml
 C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\SharpDX.xml
@@ -25,3 +24,8 @@ C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\obj\x86\Debug\Half-Lif
 C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\obj\x86\Debug\Half-Life 3.exe
 C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\obj\x86\Debug\Half-Life 3.pdb
 C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Resources\Gordon Freeman\knife\idle\survivor-idle_knife_0.png
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Content\hl_font.xnb
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Artemis.Engine.dll
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\FarseerPhysics MonoGame.dll
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\FarseerPhysics MonoGame.pdb
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Artemis.Engine.pdb

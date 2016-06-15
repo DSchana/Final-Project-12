@@ -22,15 +22,22 @@ namespace Half_Life_3.Story
         /// </summary>
         public Vector2 FontPosition { get; private set; }
 
+        private StringBuilder sBuilder = new StringBuilder();
+
         public DialogueManager()
         {
-            Font = AssetLoader.Load<SpriteFont>("HalfLife", false);
+            Font = AssetLoader.Load<SpriteFont>("hl_font", false);
             FontPosition = new Vector2(100, 1000);
         }
 
         public void Write(Character sayer, string words)
         {
-            ArtemisEngine.RenderPipeline.RenderText(Font, new StringBuilder(words), FontPosition, new Color(247, 209, 37));
+            sBuilder.Append(sayer.Name.ToUpper());
+            sBuilder.Append(": " + words);
+
+            ArtemisEngine.RenderPipeline.RenderText(Font, sBuilder, FontPosition, new Color(247, 209, 37));
+
+            sBuilder.Clear();
         }
     }
 }

@@ -285,8 +285,6 @@ namespace Half_Life_3.Entities
             {
                 entity.Show();
             }
-
-            Game1.Freeman.Say("TEST DIALOGUE. HERE COME THE COMBINE");
         }
     }
 }

@@ -53,10 +53,10 @@ namespace Half_Life_3.Entities.Characters
         /// </summary>
         public int Speed = 5;
 
-        public Character(string name) : base(name)
+        public Character(string name, bool indestructible = false) : base(name)
         {
             Type = EntityType.Character;
-            Indestructible = false;
+            Indestructible = indestructible;
             Attacking = false;
 
             BoundingBox = new Rectangle((int)WorldPosition.X, (int)WorldPosition.Y, 280, 220);

@@ -4,6 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Half-Life 3", "Half-Life 3\Half-Life 3.csproj", "{F962BB85-9ABB-422E-8633-17320EB75AA2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{82995A65-F12C-4737-99C1-93CCC29E5456} = {82995A65-F12C-4737-99C1-93CCC29E5456}
+		{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7} = {0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artemis.Engine", "..\Artemis-Engine\Artemis.Engine\Artemis.Engine.csproj", "{82995A65-F12C-4737-99C1-93CCC29E5456}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Farseer Physics MonoGame", "..\Artemis-Engine\Farseer Physics Engine 3.5\Farseer Physics MonoGame.csproj", "{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,14 @@ Global
 		{F962BB85-9ABB-422E-8633-17320EB75AA2}.Debug|x86.Build.0 = Debug|x86
 		{F962BB85-9ABB-422E-8633-17320EB75AA2}.Release|x86.ActiveCfg = Release|x86
 		{F962BB85-9ABB-422E-8633-17320EB75AA2}.Release|x86.Build.0 = Release|x86
+		{82995A65-F12C-4737-99C1-93CCC29E5456}.Debug|x86.ActiveCfg = Debug|x86
+		{82995A65-F12C-4737-99C1-93CCC29E5456}.Debug|x86.Build.0 = Debug|x86
+		{82995A65-F12C-4737-99C1-93CCC29E5456}.Release|x86.ActiveCfg = Release|x86
+		{82995A65-F12C-4737-99C1-93CCC29E5456}.Release|x86.Build.0 = Release|x86
+		{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}.Debug|x86.ActiveCfg = Debug|x86
+		{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}.Debug|x86.Build.0 = Debug|x86
+		{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}.Release|x86.ActiveCfg = Release|x86
+		{0AAD36E3-51A5-4A07-AB60-5C8A66BD38B7}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
