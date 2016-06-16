@@ -103,7 +103,12 @@ namespace Half_Life_3.Entities.Characters
         private void Attack()
         {
             // TODO: Fire only if combine has unobstructed view of target
-            if (Math.Sqrt(Math.Pow(Math.Abs(WorldPosition.X - Game1.Freeman.WorldPosition.X), 2) + Math.Pow(Math.Abs(WorldPosition.Y - Game1.Freeman.WorldPosition.Y), 2)) <= (int)CurrentWeapon.MeleeRange && !Sprites.CurrentState.Contains("meleeattack"))
+            if (CurrentWeapon.ClipAmmo <= 0)
+            {
+                ChangeState("reload", true);
+                CurrentWeapon.Reload();
+            }
+            else if (Math.Sqrt(Math.Pow(Math.Abs(WorldPosition.X - Game1.Freeman.WorldPosition.X), 2) + Math.Pow(Math.Abs(WorldPosition.Y - Game1.Freeman.WorldPosition.Y), 2)) <= (int)CurrentWeapon.MeleeRange && !Sprites.CurrentState.Contains("meleeattack"))
             {
                 ChangeState("meleeattack");
                 CurrentWeapon.Fire(DamageType.Melee);

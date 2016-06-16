@@ -45,6 +45,7 @@ namespace Half_Life_3
 
             ArtemisEngine.RegisterMultiforms(new MenuMultiform("Main Menu"));
             ArtemisEngine.RegisterMultiforms(new GameMultiform("Game"));
+            ArtemisEngine.RegisterMultiforms(new GUIMultiform("GUI"));
 
             ArtemisEngine.StartWith("Main Menu");
         }

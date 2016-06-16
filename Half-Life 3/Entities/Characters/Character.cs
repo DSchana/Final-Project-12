@@ -65,10 +65,10 @@ namespace Half_Life_3.Entities.Characters
         /// Change the state in which the animation
         /// will render images from.
         /// </summary>
-        /// <param name="state"></param>
-        public void ChangeState(string state)
+        /// <param name="state">New state name</param>
+        public void ChangeState(string state, bool forceStateChange = false)
         {
-            Sprites.ChangeState(CurrentWeapon.Name + state);
+            Sprites.ChangeState(CurrentWeapon.Name + state, forceStateChange);
         }
 
         public void AddHealth(int health)

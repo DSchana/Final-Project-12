@@ -1,7 +1,7 @@
 ﻿using Artemis.Engine;
-using Artemis.Engine.Multiforms;
-using Artemis.Engine.Graphics;
 using Artemis.Engine.Assets;
+using Artemis.Engine.Multiforms;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,15 @@ namespace Half_Life_3
 {
     class GameMultiform : Multiform
     {
-        public Texture2D Crosshairs { get; private set; }
+        /// <summary>
+        /// Position of worldrelative to screen
+        /// </summary>
+        public Vector2 BackgroundPosition { get; private set; }
+
+        /// <summary>
+        /// Image of background
+        /// </summary>
+        public Texture2D Background { get; private set; }
 
         public GameMultiform() : base() { }
         public GameMultiform(string name) : base(name) { }
@@ -20,8 +28,7 @@ namespace Half_Life_3
         public override void Construct(MultiformConstructionArgs args)
         {
             Console.WriteLine("LET THE GAMES BEGIN");
-
-            Crosshairs = AssetLoader.Load<Texture2D>(@"Resources\Crosshairs", false);
+            Background = AssetLoader.Load<Texture2D>(@"Resources\Backgrounds\Graveyard", false);
 
             AddUpdater(MainUpdater);
             AddRenderer(MainRenderer);
@@ -29,15 +36,15 @@ namespace Half_Life_3
 
         public void MainUpdater()
         {
-            // Move the map around here
+            BackgroundPosition = -Game1.EntManager.CameraPosition;
             // Probably manage the story or call another thing to do that
             Game1.EntManager.Update();
         }
 
         public void MainRenderer()
         {
+            ArtemisEngine.RenderPipeline.Render(Background, BackgroundPosition, null, null, 0, null, Vector2.One * 6);
             Game1.EntManager.Render();
-            ArtemisEngine.RenderPipeline.Render(Crosshairs, ArtemisEngine.Mouse.PositionVector, null, null, 0, PositionOffsets.Center, originIsRelative: true);
         }
     }
 }

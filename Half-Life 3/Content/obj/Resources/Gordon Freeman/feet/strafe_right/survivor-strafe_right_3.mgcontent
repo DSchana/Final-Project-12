@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/../Resources/Gordon Freeman/feet/strafe_right/survivor-strafe_right_3.png</SourceFile>
-  <SourceTime>2016-04-28T13:10:57.5059174-04:00</SourceTime>
+  <SourceTime>2016-05-04T22:20:04.4192189-04:00</SourceTime>
   <DestFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/bin/Windows/../Resources/Gordon Freeman/feet/strafe_right/survivor-strafe_right_3.xnb</DestFile>
-  <DestTime>2016-06-15T08:46:44.0047977-04:00</DestTime>
+  <DestTime>2016-06-16T00:35:47.7685548-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T13:14:44-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

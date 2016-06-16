@@ -161,18 +161,18 @@ namespace Half_Life_3.Entities
                 IsAnimating = true;
         }
 
-        public void Animate(string stateName)
+        public void Animate(string stateName, bool forceStateChange = false)
         {
-            ChangeState(stateName);
+            ChangeState(stateName, forceStateChange);
             Animate();
         }
 
-        public void ChangeState(string stateName)
+        public void ChangeState(string stateName, bool forceStateChange)
         {
             if (!Textures.ContainsKey(stateName))
                 throw new KeyNotFoundException(String.Format("State wiith name: '{0}' does not exist", stateName));
 
-            if (!Attacking)
+            if (!Attacking && !Reloading || forceStateChange)
             {
                 CurrentState = stateName;
                 Frame = 0;

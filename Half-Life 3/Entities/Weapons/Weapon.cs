@@ -138,7 +138,7 @@ namespace Half_Life_3.Entities.Weapons
 
         public void Fire()
         {
-            if (TypeWeapon != WeaponType.Knife)
+            if (TypeDamage != DamageType.Melee)
             {
                 ClipAmmo--;
             }
@@ -148,7 +148,7 @@ namespace Half_Life_3.Entities.Weapons
 
         public void Fire(DamageType damageType)
         {
-            if (TypeWeapon != WeaponType.Knife)
+            if (damageType != DamageType.Melee)
             {
                 ClipAmmo--;
             }

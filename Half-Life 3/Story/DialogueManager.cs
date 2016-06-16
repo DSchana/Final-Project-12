@@ -23,11 +23,12 @@ namespace Half_Life_3.Story
         public Vector2 FontPosition { get; private set; }
 
         private StringBuilder sBuilder = new StringBuilder();
+        private Color FontColour = new Color(156, 137, 72);
 
         public DialogueManager()
         {
             Font = AssetLoader.Load<SpriteFont>("hl_font", false);
-            FontPosition = new Vector2(100, 1000);
+            FontPosition = new Vector2(300, 1000);
         }
 
         public void Write(Character sayer, string words)
@@ -35,7 +36,7 @@ namespace Half_Life_3.Story
             sBuilder.Append(sayer.Name.ToUpper());
             sBuilder.Append(": " + words);
 
-            ArtemisEngine.RenderPipeline.RenderText(Font, sBuilder, FontPosition, new Color(247, 209, 37));
+            ArtemisEngine.RenderPipeline.RenderText(Font, sBuilder, FontPosition, FontColour);
 
             sBuilder.Clear();
         }

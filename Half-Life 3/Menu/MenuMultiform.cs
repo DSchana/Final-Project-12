@@ -111,6 +111,7 @@ namespace Half_Life_3.Menu
             RemoveRenderer(MainRenderer);
 
             ArtemisEngine.MultiformManager.Activate(this, "Game");
+            ArtemisEngine.MultiformManager.Activate(this, "GUI");
             ArtemisEngine.MultiformManager.Deactivate(this);
         }
 
@@ -142,7 +143,12 @@ namespace Half_Life_3.Menu
 
             loadFile.Close();
 
-            // TODO: Activate Game Multiform
+            RemoveUpdater(MainUpdater);
+            RemoveRenderer(MainRenderer);
+
+            ArtemisEngine.MultiformManager.Activate(this, "Game");
+            ArtemisEngine.MultiformManager.Activate(this, "GUI");
+            ArtemisEngine.MultiformManager.Deactivate(this);
         }
 
         private void Options()

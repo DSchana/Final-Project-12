@@ -31,3 +31,4 @@ C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Arte
 C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Resources\artemis.mp4
 C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Content\Resources\artemis.xnb
 C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Content\hl_font.xnb
+C:\Users\DSchana\Documents\GitHub\Half-Life-3\Half-Life 3\bin\Windows\Debug\Content\hl_guifont.xnb

@@ -142,10 +142,9 @@ namespace Half_Life_3.Entities.Characters
 
         private void Attack()
         {
-            Console.WriteLine(CurrentWeapon.ClipAmmo);
             if (ArtemisEngine.Keyboard.IsClicked(Keys.R) && CurrentWeapon.TypeWeapon != WeaponType.Knife || CurrentWeapon.ClipAmmo <= 0 && CurrentWeapon.TypeWeapon != WeaponType.Knife)
             {
-                ChangeState("reload");
+                ChangeState("reload", true);
                 CurrentWeapon.Reload();
             }
             else if (ArtemisEngine.Mouse.IsClicked(MouseButton.Left) && CurrentWeapon.ClipAmmo > 0 && !Sprites.CurrentState.Contains("shoot") && CurrentWeapon.TypeWeapon != WeaponType.Knife )

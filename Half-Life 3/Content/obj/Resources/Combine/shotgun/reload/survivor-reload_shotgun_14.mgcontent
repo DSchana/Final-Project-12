@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/../Resources/Combine/shotgun/reload/survivor-reload_shotgun_14.png</SourceFile>
-  <SourceTime>2016-06-15T08:38:14.1093744-04:00</SourceTime>
+  <SourceTime>2016-06-15T23:57:51.9780093-04:00</SourceTime>
   <DestFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/bin/Windows/../Resources/Combine/shotgun/reload/survivor-reload_shotgun_14.xnb</DestFile>
-  <DestTime>2016-06-15T08:51:06.277946-04:00</DestTime>
+  <DestTime>2016-06-16T00:36:08.2373777-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T13:14:44-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
