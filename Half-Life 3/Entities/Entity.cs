@@ -84,8 +84,12 @@ namespace Half_Life_3.Entities
             if (Health <= 0)
             {
                 Health = 0;
+
+                RemoveUpdater(UpdateBoundingBox);
+                RemoveRenderer(Show);
+
                 Game1.EntManager.Kill(Name);
-                Kill();
+                //Kill();
             }
         }
 

@@ -48,7 +48,7 @@ namespace Half_Life_3
             sBuilder.Append("HEALTH: ");
             sBuilder.Append(Game1.Freeman.Health);
             sBuilder.Append("  AMMO: ");
-            sBuilder.Append(Game1.Freeman.CurrentWeapon.ClipAmmo);
+            sBuilder.Append(Game1.Freeman.CurrentWeapon.ClipAmmo + "/" + Game1.Freeman.CurrentWeapon.TotalAmmo);
 
             ArtemisEngine.RenderPipeline.RenderText(Font, sBuilder, FontPosition, FontColour);
 

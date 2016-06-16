@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Artemis.Engine.Multiforms;
+using System;
 using System.Collections.Generic;
 using Half_Life_3.Entities.Weapons;
 using Half_Life_3.Entities.Characters;
@@ -82,7 +83,7 @@ namespace Half_Life_3.Entities
         /// <param name="character">The character wielding the weapon</param>
         public void DealDamage(Entity entity)
         {
-            if (entity.Type == EntityType.Character)
+            if (entity.Type == EntityType.Character || entity.Type == EntityType.CombineSoldier || entity.Type == EntityType.PlayableCharacter)
             {
                 Character character = entity as Character;
                 if (character.CurrentWeapon.TypeDamage == DamageType.Hitscan)
@@ -160,15 +161,15 @@ namespace Half_Life_3.Entities
         /// </summary>
         public void ScanHit(Character character)
         {
-            float slope = (float)(Math.Sin(character.Rotation) / Math.Cos(character.Rotation));
-            float y_int = character.WorldPosition.Y - (slope * character.WorldPosition.X);
+            double slope = Math.Sin(character.Rotation) / Math.Cos(character.Rotation);
+            double y_int = character.WorldPosition.Y - (slope * character.WorldPosition.X);
             Entity actualTarget = null;
             double actualDistanceToTarget = double.MaxValue;
 
             // Check collision and find target
             foreach (KeyValuePair<string, Entity> potentialTarget in Entities)
             {
-                if (Entities[character.Name] != potentialTarget.Value)
+                if (Entities[character.Name] == potentialTarget.Value)
                 {
                     continue;
                 }
@@ -212,13 +213,13 @@ namespace Half_Life_3.Entities
 
         public void MeeleHit(Character character)
         {
-            float slope = (float)(Math.Sin(character.Rotation) / Math.Cos(character.Rotation));
-            float y_int = character.WorldPosition.Y - (slope * character.WorldPosition.X);
+            double slope = (float)(Math.Sin(character.Rotation) / Math.Cos(character.Rotation));
+            double y_int = character.WorldPosition.Y - (slope * character.WorldPosition.X);
             List<Entity> actualTargets = new List<Entity>();
 
             foreach (KeyValuePair<string, Entity> potentialTarget in Entities)
             {
-                if (Entities[character.Name] != potentialTarget.Value)
+                if (Entities[character.Name] == potentialTarget.Value)
                 {
                     continue;
                 }

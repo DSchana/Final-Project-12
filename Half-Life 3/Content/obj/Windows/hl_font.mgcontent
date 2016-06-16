@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/hl_font.spritefont</SourceFile>
-  <SourceTime>2016-06-14T20:26:31.471789-04:00</SourceTime>
+  <SourceTime>2016-06-15T08:28:00.4441498-04:00</SourceTime>
   <DestFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/bin/Windows/hl_font.xnb</DestFile>
-  <DestTime>2016-06-16T00:36:02.8437642-04:00</DestTime>
+  <DestTime>2016-06-16T08:52:49.913499-04:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2015-04-29T13:14:44-04:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

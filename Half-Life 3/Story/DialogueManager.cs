@@ -28,7 +28,7 @@ namespace Half_Life_3.Story
         public DialogueManager()
         {
             Font = AssetLoader.Load<SpriteFont>("hl_font", false);
-            FontPosition = new Vector2(300, 1000);
+            FontPosition = new Vector2(400, 900);
         }
 
         public void Write(Character sayer, string words)

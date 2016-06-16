@@ -25,7 +25,7 @@ namespace Half_Life_3.Entities.Weapons
         public int TotalAmmo { get; private set; }
 
         /// <summary>
-        /// Total amount of ammo
+        /// Total amount of ammo possible
         /// </summary>
         public int MaxAmmo { get; private set; }
 
@@ -84,6 +84,7 @@ namespace Half_Life_3.Entities.Weapons
             {
                 MaxClipSize = 18;
                 MaxAmmo = 150;
+                TotalAmmo = 150;
                 RangeDamage = 5;
                 MeleeDamage = 4;
                 Range = WeaponRange.Medium;
@@ -94,6 +95,7 @@ namespace Half_Life_3.Entities.Weapons
             {
                 MaxClipSize = 45;
                 MaxAmmo = 225;
+                TotalAmmo = 225;
                 RangeDamage = 4;
                 MeleeDamage = 5;
                 Range = WeaponRange.Medium;
@@ -104,6 +106,7 @@ namespace Half_Life_3.Entities.Weapons
             {
                 MaxClipSize = 8;
                 MaxAmmo = 125;
+                TotalAmmo = 125;
                 RangeDamage = 30;
                 MeleeDamage = 8;
                 Range = WeaponRange.Short;
@@ -124,7 +127,7 @@ namespace Half_Life_3.Entities.Weapons
 
         public void Reload()
         {
-            if (MaxAmmo > MaxClipSize)
+            if (TotalAmmo > MaxClipSize)
             {
                 TotalAmmo -= MaxClipSize;
                 ClipAmmo = MaxClipSize;

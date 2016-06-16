@@ -37,11 +37,8 @@ namespace Half_Life_3
             */
             
             Freeman = new PlayableCharacter("Gordon Freeman", 0, 0);
-            EntManager = new EntityManager();
             DiagManager = new DialogueManager();
-
-            EntManager.Add(Freeman);
-            EntManager.Add(new CombineSoldier("Combine", CombineType.CivilProtection, 1000, 1000));
+            EntManager = new EntityManager();
 
             ArtemisEngine.RegisterMultiforms(new MenuMultiform("Main Menu"));
             ArtemisEngine.RegisterMultiforms(new GameMultiform("Game"));

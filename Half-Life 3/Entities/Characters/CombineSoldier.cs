@@ -15,6 +15,9 @@ namespace Half_Life_3.Entities.Characters
         /// </summary>
         public CombineType CType { get; private set; }
 
+        private float AttackDelay;
+        private float CurrentAttackTime = 0.0f;
+
         public CombineSoldier(string name, CombineType type, int x, int y) : base(name, x, y)
         {
             Name = name;
@@ -25,21 +28,25 @@ namespace Half_Life_3.Entities.Characters
             {
                 SetMaxHealth(40);
                 CurrentWeapon = new Weapon("USP", this, WeaponType.USPMatch);
+                AttackDelay = 0.04f;
             }
             else if (CType == CombineType.OverwatchSoldier)
             {
                 SetMaxHealth(50);
                 CurrentWeapon = new Weapon("MP7", this, WeaponType.MP7);
+                AttackDelay = 0.07f;
             }
             else if (CType == CombineType.OverwatchElite)
             {
                 SetMaxHealth(70);
                 CurrentWeapon = new Weapon("MP7", this, WeaponType.MP7);
+                AttackDelay = 0.07f;
             }
             else if (CType == CombineType.Stalker)
             {
                 SetMaxHealth(25);
                 CurrentWeapon = new Weapon("USP", this, WeaponType.USPMatch);
+                AttackDelay = 0.04f;
             }
 
             CurrentWeapon.IsActive = true;
@@ -52,9 +59,22 @@ namespace Half_Life_3.Entities.Characters
 
             ChangeState("idle");
 
+            AddUpdater(UpdaterCheck);
             AddUpdater(Rotate);
             AddUpdater(Move);
             AddUpdater(Attack);
+        }
+
+        private void UpdaterCheck()
+        {
+            if (Health <= 0)
+            {
+                RemoveUpdater(Rotate);
+                RemoveUpdater(Move);
+                RemoveUpdater(Attack);
+
+                RemoveUpdater(UpdaterCheck);
+            }
         }
 
         /// <summary>
@@ -103,6 +123,8 @@ namespace Half_Life_3.Entities.Characters
         private void Attack()
         {
             // TODO: Fire only if combine has unobstructed view of target
+            CurrentAttackTime += AttackDelay;
+
             if (CurrentWeapon.ClipAmmo <= 0)
             {
                 ChangeState("reload", true);
@@ -113,8 +135,9 @@ namespace Half_Life_3.Entities.Characters
                 ChangeState("meleeattack");
                 CurrentWeapon.Fire(DamageType.Melee);
             }
-            else if (!Sprites.CurrentState.Contains("shoot") && CurrentWeapon.ClipAmmo > 0)
+            else if (!Sprites.CurrentState.Contains("shoot") && CurrentWeapon.ClipAmmo > 0 && CurrentAttackTime >= 2)
             {
+                CurrentAttackTime = 0.0f;
                 ChangeState("shoot");
                 CurrentWeapon.Fire();
             }

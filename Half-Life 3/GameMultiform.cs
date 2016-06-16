@@ -1,6 +1,7 @@
 ﻿using Artemis.Engine;
 using Artemis.Engine.Assets;
 using Artemis.Engine.Multiforms;
+using Half_Life_3.Entities.Characters;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -29,6 +30,10 @@ namespace Half_Life_3
         {
             Console.WriteLine("LET THE GAMES BEGIN");
             Background = AssetLoader.Load<Texture2D>(@"Resources\Backgrounds\Graveyard", false);
+
+            Game1.EntManager.Add(Game1.Freeman);
+            for (int i = 0; i < 10; i++)
+                Game1.EntManager.Add(new CombineSoldier("Combine" + i, CombineType.CivilProtection, 1000, 1000));
 
             AddUpdater(MainUpdater);
             AddRenderer(MainRenderer);
