@@ -1,6 +1,7 @@
 ﻿using Artemis.Engine;
 using Artemis.Engine.Assets;
 using Artemis.Engine.Multiforms;
+using Half_Life_3.Entities.Obstacles;
 using Half_Life_3.Entities.Characters;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -29,11 +30,11 @@ namespace Half_Life_3
         public override void Construct(MultiformConstructionArgs args)
         {
             Console.WriteLine("LET THE GAMES BEGIN");
-            Background = AssetLoader.Load<Texture2D>(@"Resources\Backgrounds\Graveyard", false);
+            Background = AssetLoader.Load<Texture2D>(@"Resources\Backgrounds\Graveyard.png", false);
 
-            Game1.EntManager.Add(Game1.Freeman);
-            for (int i = 0; i < 10; i++)
-                Game1.EntManager.Add(new CombineSoldier("Combine" + i, CombineType.CivilProtection, 1000, 1000));
+            Game1.EntityManager.Add(Game1.Freeman);
+            Game1.EntityManager.Add(Game1.Alyx);
+            Game1.EntityManager.Add(new Obstacle("Eli Grave", 500, 230, 162, 261));
 
             AddUpdater(MainUpdater);
             AddRenderer(MainRenderer);
@@ -41,15 +42,17 @@ namespace Half_Life_3
 
         public void MainUpdater()
         {
-            BackgroundPosition = -Game1.EntManager.CameraPosition;
-            // Probably manage the story or call another thing to do that
-            Game1.EntManager.Update();
+            BackgroundPosition = -Game1.EntityManager.CameraPosition;
+            Game1.EntityManager.Update();
+            Game1.StoryManager.TriggerFlag();
         }
 
         public void MainRenderer()
         {
-            ArtemisEngine.RenderPipeline.Render(Background, BackgroundPosition, null, null, 0, null, Vector2.One * 6);
-            Game1.EntManager.Render();
+            // new Rectangle((int)Game1.EntManager.CameraPosition.X, (int)Game1.EntManager.CameraPosition.Y, ArtemisEngine.DisplayManager.WindowResolution.Width, ArtemisEngine.DisplayManager.WindowResolution.Height)
+            ArtemisEngine.RenderPipeline.Render(Background, BackgroundPosition, null, null, 0, null);  // Fix this to only render part of the background that is shown
+            Game1.EntityManager.Render();
+            Game1.DialogueManager.Render();
         }
     }
 }

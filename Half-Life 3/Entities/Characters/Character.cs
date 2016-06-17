@@ -53,12 +53,12 @@ namespace Half_Life_3.Entities.Characters
             Type = EntityType.Character;
             Indestructible = indestructible;
 
-            BoundingBox = new Rectangle((int)WorldPosition.X, (int)WorldPosition.Y, 280, 220);
+            BoundingBox = new Rectangle((int)WorldPosition.X + 40, (int)WorldPosition.Y + 45, 204, 147);
         }
 
         public void Say(string words)
         {
-            Game1.DiagManager.Write(this, words);
+            Game1.DialogueManager.Write(this, words);
         }
 
         /// <summary>

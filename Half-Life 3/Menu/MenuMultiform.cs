@@ -4,6 +4,8 @@ using Artemis.Engine.Fixins;
 using Artemis.Engine.Forms;
 using Artemis.Engine.Multiforms;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;

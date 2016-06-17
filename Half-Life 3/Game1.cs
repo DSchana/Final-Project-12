@@ -22,8 +22,10 @@ namespace Half_Life_3
     class Game1
     {
         public static PlayableCharacter Freeman { get; private set; }
-        public static EntityManager EntManager { get; private set; }
-        public static DialogueManager DiagManager { get; private set; }
+        public static HelperCharacter Alyx { get; private set; }
+        public static EntityManager EntityManager { get; private set; }
+        public static DialogueManager DialogueManager { get; private set; }
+        public static StoryManager StoryManager { get; private set; }
 
         public Game1()
         {
@@ -37,8 +39,10 @@ namespace Half_Life_3
             */
             
             Freeman = new PlayableCharacter("Gordon Freeman", 0, 0);
-            DiagManager = new DialogueManager();
-            EntManager = new EntityManager();
+            Alyx = new HelperCharacter("Alyx", 1500, 1500, true);
+            DialogueManager = new DialogueManager();
+            EntityManager = new EntityManager();
+            StoryManager = new StoryManager();
 
             ArtemisEngine.RegisterMultiforms(new MenuMultiform("Main Menu"));
             ArtemisEngine.RegisterMultiforms(new GameMultiform("Game"));

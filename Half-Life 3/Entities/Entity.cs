@@ -88,17 +88,18 @@ namespace Half_Life_3.Entities
                 RemoveUpdater(UpdateBoundingBox);
                 RemoveRenderer(Show);
 
-                Game1.EntManager.Kill(Name);
+                Game1.EntityManager.Kill(Name);
                 //Kill();
             }
         }
 
         public void Show()
         {
-            if (ScreenPosition.X >= 0 &&
-                ScreenPosition.Y >= 0 &&
-                ScreenPosition.X <= ArtemisEngine.DisplayManager.WindowResolution.Width &&
-                ScreenPosition.Y <= ArtemisEngine.DisplayManager.WindowResolution.Height)
+            if (Sprites != null &&
+                ScreenPosition.X >= -100 &&
+                ScreenPosition.Y >= -100 &&
+                ScreenPosition.X <= ArtemisEngine.DisplayManager.WindowResolution.Width + 100 &&
+                ScreenPosition.Y <= ArtemisEngine.DisplayManager.WindowResolution.Height + 100)
             {
                 Sprites.Render(ScreenPosition, Rotation);
             }

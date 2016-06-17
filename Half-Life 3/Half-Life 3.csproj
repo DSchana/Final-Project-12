@@ -38,6 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entities\Characters\HelperCharacter.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\EntityType.cs" />
     <Compile Include="Entities\Sprite.cs" />
@@ -60,6 +61,8 @@
     <Compile Include="Entities\Weapons\WeaponRange.cs" />
     <Compile Include="Entities\Weapons\WeaponType.cs" />
     <Compile Include="Story\DialogueManager.cs" />
+    <Compile Include="Story\Flag.cs" />
+    <Compile Include="Story\StoryManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Artemis.Engine, Version=3.3.0.2238, Culture=neutral, processorArchitecture=x86">
@@ -78,8 +81,12 @@
     <Content Include="Resources\artemis.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Backgrounds\Graveyard.jpg" />
+    <Content Include="Resources\Backgrounds\cavernofsorrowb_by_nicnubill-d6qnbs4.png" />
+    <Content Include="Resources\Backgrounds\Grass.png" />
+    <Content Include="Resources\Backgrounds\Graveyard.png" />
+    <Content Include="Resources\Backgrounds\graveyardparts.png" />
     <Content Include="Resources\Backgrounds\Hanger.jpg" />
+    <Content Include="Resources\Backgrounds\tombstones.png" />
     <Content Include="Resources\Combine\feet\idle\survivor-idle_0.png" />
     <Content Include="Resources\Combine\feet\run\survivor-run_0.png" />
     <Content Include="Resources\Combine\feet\run\survivor-run_1.png" />
@@ -924,6 +931,11 @@
     <Content Include="Resources\Gordon Freeman\USPMatch\shoot\freeman-shoot_handgun_0.png" />
     <Content Include="Resources\Gordon Freeman\USPMatch\shoot\freeman-shoot_handgun_1.png" />
     <Content Include="Resources\Gordon Freeman\USPMatch\shoot\freeman-shoot_handgun_2.png" />
+    <Content Include="Resources\GUI\Knife.png" />
+    <Content Include="Resources\GUI\MP7.png" />
+    <Content Include="Resources\GUI\SPAS12.png" />
+    <Content Include="Resources\GUI\UPS.png" />
+    <Content Include="Resources\GUI\Weapons Full.jpg" />
     <Content Include="Resources\Lambda small.png" />
     <Content Include="Resources\Lambda.png" />
     <Content Include="Resources\Menu\background 1.jpg" />
@@ -2657,6 +2669,8 @@
     <None Include="Content\Resources\Menu\Title.xnb" />
     <None Include="Fonts\HalfLife.ttf" />
     <None Include="game.constants" />
+    <None Include="Resources\Backgrounds\Graveyard.psd" />
+    <None Include="Resources\hl_flags.flags" />
     <None Include="Resources\Menu\idk looked cool dont use in game.psd" />
     <None Include="Resources\Menu\Load Game.psd" />
     <None Include="Resources\Menu\New Game.psd" />

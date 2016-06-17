@@ -58,7 +58,7 @@ namespace Half_Life_3.Entities.Obstacles
             if (Health <= 0)
             {
                 // Animate explosions
-                Game1.EntManager.DealDamage(this);
+                Game1.EntityManager.DealDamage(this);
             }
         }
     }

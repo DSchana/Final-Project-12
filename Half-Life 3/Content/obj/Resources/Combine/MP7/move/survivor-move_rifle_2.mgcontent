@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/../Resources/Combine/MP7/move/survivor-move_rifle_2.png</SourceFile>
-  <SourceTime>2016-06-15T08:38:11.5918801-04:00</SourceTime>
+  <SourceTime>2016-06-15T23:57:51.65935-04:00</SourceTime>
   <DestFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/bin/Windows/../Resources/Combine/MP7/move/survivor-move_rifle_2.xnb</DestFile>
-  <DestTime>2016-06-16T08:52:59.7167517-04:00</DestTime>
+  <DestTime>2016-06-16T18:14:27.8997662-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T13:14:44-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

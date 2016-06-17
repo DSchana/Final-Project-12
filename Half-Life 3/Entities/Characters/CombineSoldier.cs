@@ -103,8 +103,21 @@ namespace Half_Life_3.Entities.Characters
                 NewWorldPosition.Y += (float)(Speed * Math.Sin(Rotation));
             }
 
-            WorldPosition = NewWorldPosition;
-            ScreenPosition = WorldPosition - Game1.EntManager.CameraPosition;
+            int collisionsValue = Game1.EntityManager.IsCollisionFree(this, new Rectangle((int)NewWorldPosition.X, (int)NewWorldPosition.Y, BoundingBox.Width, BoundingBox.Height));
+            if (collisionsValue == 0)
+            {
+                WorldPosition = NewWorldPosition;
+            }
+            else if (collisionsValue == 1)
+            {
+                WorldPosition = new Vector2(NewWorldPosition.X, WorldPosition.Y);
+            }
+            else if (collisionsValue == 2)
+            {
+                WorldPosition = new Vector2(WorldPosition.X, NewWorldPosition.Y);
+            }
+
+            ScreenPosition = WorldPosition - Game1.EntityManager.CameraPosition;
 
             if (isMoving && !Sprites.CurrentState.Contains("move"))
             {
@@ -133,13 +146,13 @@ namespace Half_Life_3.Entities.Characters
             else if (Math.Sqrt(Math.Pow(Math.Abs(WorldPosition.X - Game1.Freeman.WorldPosition.X), 2) + Math.Pow(Math.Abs(WorldPosition.Y - Game1.Freeman.WorldPosition.Y), 2)) <= (int)CurrentWeapon.MeleeRange && !Sprites.CurrentState.Contains("meleeattack"))
             {
                 ChangeState("meleeattack");
-                CurrentWeapon.Fire(DamageType.Melee);
+                // CurrentWeapon.Fire(DamageType.Melee);
             }
             else if (!Sprites.CurrentState.Contains("shoot") && CurrentWeapon.ClipAmmo > 0 && CurrentAttackTime >= 2)
             {
                 CurrentAttackTime = 0.0f;
                 ChangeState("shoot");
-                CurrentWeapon.Fire();
+                // CurrentWeapon.Fire();
             }
         }
     }

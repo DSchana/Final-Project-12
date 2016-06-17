@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/../Resources/Menu/background 3.jpg</SourceFile>
-  <SourceTime>2016-06-12T15:54:03.8593799-04:00</SourceTime>
+  <SourceTime>2016-06-12T03:14:42.7886034-04:00</SourceTime>
   <DestFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/bin/Windows/../Resources/Menu/background 3.xnb</DestFile>
-  <DestTime>2016-06-16T08:52:43.7553273-04:00</DestTime>
+  <DestTime>2016-06-16T18:14:14.8076094-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T13:14:44-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

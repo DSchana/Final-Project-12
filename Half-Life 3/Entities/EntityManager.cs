@@ -278,12 +278,103 @@ namespace Half_Life_3.Entities
             }
         }
 
+        public bool IsCollisionFree(Entity entity)
+        {
+            foreach (KeyValuePair<string, Entity> collisionTarget in Entities)
+            {
+                if (collisionTarget.Value == entity)
+                {
+                    continue;
+                }
+
+                if (entity.BoundingBox.Contains(collisionTarget.Value.BoundingBox))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Check collisions with other entities
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="entityBoundingBox"></param>
+        /// <returns>
+        /// returns 0, 1, 2, 3 if
+        /// no collision, Top collision, Side collision, Both collisions
+        /// </returns>
+        public int IsCollisionFree(Entity entity, Rectangle entityBoundingBox)
+        {
+            List<int> intersections = new List<int>();
+
+            foreach (KeyValuePair<string, Entity> collisionTarget in Entities)
+            {
+                if (collisionTarget.Value == entity)
+                {
+                    continue;
+                }
+
+                intersections.Add(CheckIntersection(entityBoundingBox, collisionTarget.Value.BoundingBox));
+            }
+
+            if (intersections.Contains(1) && intersections.Contains(2))
+            {
+                return 3;
+            }
+            else if (intersections.Contains(1))
+            {
+                return 1;
+            }
+            else if (intersections.Contains(2))
+            {
+                return 2;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Check intersection of two Rectangles
+        /// </summary>
+        /// <param name="rect1"></param>
+        /// <param name="rect2"></param>
+        /// <returns>
+        /// returns 0, 1, 2 if
+        /// no collision, Top collision, Side collision
+        /// </returns>
+        public int CheckIntersection(Rectangle rect1, Rectangle rect2)
+        {
+            if (!rect1.Intersects(rect2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (Math.Abs(rect1.Width - Math.Abs(rect1.X - rect2.X)) >= Math.Abs(rect1.Height - Math.Abs(rect1.Y - rect2.Y)))
+                {
+                    return 1;
+                }
+                if (Math.Abs(rect1.Width - Math.Abs(rect1.X - rect2.X)) < Math.Abs(rect1.Height - Math.Abs(rect1.Y - rect2.Y)))
+                {
+                    return 2;
+                }
+            }
+            return 0;  // Should never reach here
+        }
+
         public void Update()
         {
             CameraPosition = Game1.Freeman.WorldPosition - Game1.Freeman.ScreenPosition;
             foreach (var entity in Entities.Values)
             {
-                entity.Sprites.Update();
+                if (entity.Sprites != null)
+                {
+                    entity.Sprites.Update();
+                }
             }
         }
 

@@ -12,7 +12,15 @@ namespace Half_Life_3.Entities.Characters
 {
     class PlayableCharacter : Character
     {
+        /// <summary>
+        /// List of weapons availible to player
+        /// </summary>
         public List<Weapon> Weapons { get; private set; }
+
+        /// <summary>
+        /// Previous weapon selected
+        /// </summary>
+        public Weapon PreviousWeapon { get; private set; }
 
         public PlayableCharacter(string name, int x, int y) : base(name, x, y)
         {
@@ -30,6 +38,8 @@ namespace Half_Life_3.Entities.Characters
 
             CurrentWeapon = Weapons[0];
             CurrentWeapon.IsActive = true;
+
+            PreviousWeapon = Weapons[1];
 
             Type = EntityType.PlayableCharacter;
             IsPlayable = true;
@@ -76,14 +86,23 @@ namespace Half_Life_3.Entities.Characters
             {
                 ChangeWeapon(4);
             }
+            else if (ArtemisEngine.Keyboard.IsClicked(Keys.Q))
+            {
+                CurrentWeapon.IsActive = false;
+                Weapon middleWeapon = PreviousWeapon;
+                PreviousWeapon = CurrentWeapon;
+                CurrentWeapon = middleWeapon;
+                CurrentWeapon.IsActive = true;
+                ChangeState("idle");
+            }
         }
 
         public void ChangeWeapon(int weaponSlot)
         {
-            Console.WriteLine(Sprites.Attacking);
-            if (weaponSlot < Weapons.Count && !Sprites.Attacking)
+            if (weaponSlot < Weapons.Count && !Sprites.Attacking && CurrentWeapon != Weapons[weaponSlot])
             {
                 CurrentWeapon.IsActive = false;
+                PreviousWeapon = CurrentWeapon;
                 CurrentWeapon = Weapons[weaponSlot];
                 CurrentWeapon.IsActive = true;
                 ChangeState("idle");
@@ -127,6 +146,14 @@ namespace Half_Life_3.Entities.Characters
                 NewWorldPosition.X += (float)(Speed * Math.Cos(Rotation + 90));
                 NewWorldPosition.Y += (float)(Speed * Math.Sin(Rotation + 90));
             }
+            if (ArtemisEngine.Keyboard.IsHeld(Keys.LeftShift))
+            {
+                Speed = 10;
+            }
+            else
+            {
+                Speed = 5;
+            }
 
             if (isMoving && !Sprites.CurrentState.Contains("move"))
             {
@@ -137,7 +164,19 @@ namespace Half_Life_3.Entities.Characters
                 ChangeState("idle");
             }
 
-            WorldPosition = NewWorldPosition;
+            int collisionsValue = Game1.EntityManager.IsCollisionFree(this, new Rectangle((int)NewWorldPosition.X, (int)NewWorldPosition.Y, BoundingBox.Width, BoundingBox.Height));
+            if (collisionsValue == 0)
+            {
+                WorldPosition = NewWorldPosition;
+            }
+            else if (collisionsValue == 1)
+            {
+                WorldPosition = new Vector2(NewWorldPosition.X, WorldPosition.Y);
+            }
+            else if (collisionsValue == 2)
+            {
+                WorldPosition = new Vector2(WorldPosition.X, NewWorldPosition.Y);
+            }
         }
 
         private void Attack()

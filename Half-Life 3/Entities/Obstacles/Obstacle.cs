@@ -18,6 +18,7 @@ namespace Half_Life_3.Entities.Obstacles
         {
             Type = EntityType.Obstacle;
             Indestructible = indestructible;
+            IsInteractable = false;
             BoundingBox = new Rectangle(x, y, width, height);
         }
 
@@ -25,6 +26,7 @@ namespace Half_Life_3.Entities.Obstacles
         {
             Type = EntityType.Obstacle;
             Indestructible = indestructible;
+            IsInteractable = false;
             BoundingBox = boundingBox;
         }
     }

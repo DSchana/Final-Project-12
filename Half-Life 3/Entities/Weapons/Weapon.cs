@@ -146,7 +146,7 @@ namespace Half_Life_3.Entities.Weapons
                 ClipAmmo--;
             }
             // Animate
-            Game1.EntManager.DealDamage(Holder);
+            Game1.EntityManager.DealDamage(Holder);
         }
 
         public void Fire(DamageType damageType)
@@ -156,7 +156,7 @@ namespace Half_Life_3.Entities.Weapons
                 ClipAmmo--;
             }
             // Animate
-            Game1.EntManager.DealDamage(Holder, damageType);
+            Game1.EntityManager.DealDamage(Holder, damageType);
         }
     }
 }
