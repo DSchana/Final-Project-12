@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/../Resources/Gordon Freeman/flashlight/meleeattack/survivor-meleeattack_flashlight_8.png</SourceFile>
-  <SourceTime>2016-05-04T22:20:04.4659886-04:00</SourceTime>
+  <SourceTime>2016-04-28T13:10:59.8931041-04:00</SourceTime>
   <DestFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/bin/../Resources/Gordon Freeman/flashlight/meleeattack/survivor-meleeattack_flashlight_8.xnb</DestFile>
-  <DestTime>2016-06-16T02:40:47.5975461-04:00</DestTime>
+  <DestTime>2016-06-17T09:25:05.9750716-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T13:14:44-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/../Resources/Gordon Freeman/SPAS12/shoot/freeman-shoot_shotgun_2.png</SourceFile>
-  <SourceTime>2016-06-10T17:32:36.826292-04:00</SourceTime>
+  <SourceTime>2016-05-16T08:25:54.6209542-04:00</SourceTime>
   <DestFile>C:/Users/DSchana/Documents/GitHub/Half-Life-3/Half-Life 3/Content/bin/../Resources/Gordon Freeman/SPAS12/shoot/freeman-shoot_shotgun_2.xnb</DestFile>
-  <DestTime>2016-06-16T02:40:53.8510265-04:00</DestTime>
+  <DestTime>2016-06-17T09:25:22.0435467-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-04-29T13:14:44-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

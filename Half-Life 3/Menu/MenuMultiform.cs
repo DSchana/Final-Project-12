@@ -41,6 +41,11 @@ namespace Half_Life_3.Menu
         public Texture2D Title { get; private set; }
 
         /// <summary>
+        /// Menu music
+        /// </summary>
+        public Song BackgroundMusic { get; private set; }
+
+        /// <summary>
         /// Cursor image
         /// </summary>
         public Texture2D Cursor { get; private set; }
@@ -51,9 +56,10 @@ namespace Half_Life_3.Menu
         {
             // ButtonForm = new PositionalForm("Buttons");
             // TODO: Change the range
-            Background = AssetLoader.Load<Texture2D>(@"Resources\Menu\background " + rnd.Next(1, 5) + ".jpg", false);
+            Background = AssetLoader.Load<Texture2D>(@"Resources\Menu\background " + rnd.Next(1, 6) + ".jpg", false);
             Cursor = AssetLoader.Load<Texture2D>(@"Resources\Cursor.png", false);
             Title = AssetLoader.Load<Texture2D>(@"Resources\Menu\Title.png", false);
+            // BackgroundMusic = AssetLoader.Content.Load<Song>(@"Resources\Music\Menu");
 
             Buttons = new List<Button>();
 
@@ -102,6 +108,7 @@ namespace Half_Life_3.Menu
         // Button click actions
         private void NewGame()
         {
+            Game1.Restart();
             StreamWriter newFile = new StreamWriter(Directory.GetCurrentDirectory() + "\\hl_1.hlsave");
 
             newFile.WriteLine(0 + " " + 0);  // Coords not right
@@ -114,11 +121,12 @@ namespace Half_Life_3.Menu
 
             ArtemisEngine.MultiformManager.Activate(this, "Game");
             ArtemisEngine.MultiformManager.Activate(this, "GUI");
-            ArtemisEngine.MultiformManager.Deactivate(this);
+            Deactivate();
         }
 
         private void LoadGame()
         {
+            Game1.Restart();
             StreamReader loadFile = new StreamReader(Directory.GetCurrentDirectory() + "\\hl_1.hlsave");
 
             int counter = 0;
@@ -150,7 +158,7 @@ namespace Half_Life_3.Menu
 
             ArtemisEngine.MultiformManager.Activate(this, "Game");
             ArtemisEngine.MultiformManager.Activate(this, "GUI");
-            ArtemisEngine.MultiformManager.Deactivate(this);
+            ArtemisEngine.MultiformManager.Deactivate("Main Menu");
         }
 
         private void Options()

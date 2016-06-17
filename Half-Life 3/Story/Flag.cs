@@ -45,7 +45,6 @@ namespace Half_Life_3.Story
         {
             if (Name.ToLower() == "funeral")
             {
-                /*
                 Game1.Alyx.Say("I can't believe he's gone.");
                 Game1.Alyx.Say("My father did not deserve this");
                 Game1.Alyx.Say("Eli was a good man");
@@ -56,9 +55,8 @@ namespace Half_Life_3.Story
                 Game1.Alyx.Say("Let's head over to the hanger and find the Borealis");
                 Game1.Alyx.Say("Oh, By the way");
                 Game1.Alyx.Say("I've taken the liberty and upgraded your HEV Hazard Suit");
-                */
                 Game1.DialogueManager.Write("Hazard Suit Vocal Aid Module", "Head over the hanger east of your location");
-                Game1.StoryManager.Next();
+                Advance();
             }
             else if (Name.ToLower() == "overwatchbattle")
             {
@@ -67,27 +65,31 @@ namespace Half_Life_3.Story
                     Game1.Alyx.Say("Gordon, Watch out. Combine soldiers");
                     if (!Game1.EntityManager.Entities.ContainsKey("Combine0") &&
                         !Game1.EntityManager.Entities.ContainsKey("Combine1") &&
-                        !Game1.EntityManager.Entities.ContainsKey("Combine2") &&
-                        !Game1.EntityManager.Entities.ContainsKey("Combine3") &&
-                        !Game1.EntityManager.Entities.ContainsKey("Combine4"))
+                        !Game1.EntityManager.Entities.ContainsKey("Combine2"))
                     {
                         enemySpawnTimes++;
-                        for (int i = 0; i < 5; i++)
+                        for (int i = 0; i < 2; i++)
                         {
-                            Game1.EntityManager.Add(new CombineSoldier("Combine" + i, CombineType.OverwatchSoldier, 1600 + i * 150, 1300));
+                            Game1.EntityManager.Add(new CombineSoldier("Combine" + i, CombineType.CivilProtection, 1600 + i * 150, 1300));
                         }
                     }
                 }
-                if (enemySpawnTimes == 3)
+                if (enemySpawnTimes == 1)
                 {
-                    Game1.StoryManager.Next();
+                    Advance();
                 }
             }
             else if (Name.ToLower() == "hanger")
             {
-                Game1.Alyx.Say("Well, here we are.");
-                Game1.Alyx.Say("This is where it happen.");
-                Game1.Alyx.Say("Let's keep moving. Get in the chopper Gordon");
+                //Game1.Alyx.Say("That was close");
+                Game1.Alyx.Say("Come on, we need to get to the hangar");
+                if (Game1.Freeman.WorldPosition.X > 2300 &&
+                    !Game1.EntityManager.Entities.ContainsKey("Combine0") &&
+                    !Game1.EntityManager.Entities.ContainsKey("Combine1") &&
+                    !Game1.EntityManager.Entities.ContainsKey("Combine2"))
+                {
+                    Advance();
+                }
             }
         }
     }

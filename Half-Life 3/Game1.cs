@@ -23,6 +23,7 @@ namespace Half_Life_3
     {
         public static PlayableCharacter Freeman { get; private set; }
         public static HelperCharacter Alyx { get; private set; }
+        public static Helicopter Jim { get; private set; }
         public static EntityManager EntityManager { get; private set; }
         public static DialogueManager DialogueManager { get; private set; }
         public static StoryManager StoryManager { get; private set; }
@@ -38,8 +39,9 @@ namespace Half_Life_3
             player.Play(video);
             */
             
-            Freeman = new PlayableCharacter("Gordon Freeman", 0, 0);
+            Freeman = new PlayableCharacter("Gordon Freeman", 200, 200);
             Alyx = new HelperCharacter("Alyx", 1500, 1500, true);
+            Jim = new Helicopter("Jim", 200, 200);
             DialogueManager = new DialogueManager();
             EntityManager = new EntityManager();
             StoryManager = new StoryManager();
@@ -49,6 +51,16 @@ namespace Half_Life_3
             ArtemisEngine.RegisterMultiforms(new GUIMultiform("GUI"));
 
             ArtemisEngine.StartWith("Main Menu");
+        }
+
+        public static void Restart()
+        {
+            Freeman = new PlayableCharacter("Gordon Freeman", 200, 200);
+            Alyx = new HelperCharacter("Alyx", 1500, 1500, true);
+            Jim = new Helicopter("Jim", 200, 200);
+            DialogueManager = new DialogueManager();
+            EntityManager = new EntityManager();
+            StoryManager = new StoryManager();
         }
     }
 }

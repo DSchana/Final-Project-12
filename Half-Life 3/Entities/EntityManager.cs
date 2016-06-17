@@ -42,11 +42,31 @@ namespace Half_Life_3.Entities
         {
             try
             {
+                if (Entities[name].Type == EntityType.PlayableCharacter)
+                {
+                    (Entities[name] as PlayableCharacter).StopUpdating();
+                }
+
                 Entities.Remove(name);
             }
             catch (KeyNotFoundException e)
             {
                 throw new KeyNotFoundException(String.Format("'{0}' not a character. \nError at: \n'{1}'", name));
+            }
+        }
+
+        public void KillAll()
+        {
+            List<string> ToKill = new List<string>();
+
+            foreach (KeyValuePair<string, Entity> entity in Entities)
+            {
+                ToKill.Add(entity.Key);
+            }
+
+            foreach (string kill in ToKill)
+            {
+                Kill(kill);
             }
         }
 
@@ -219,7 +239,14 @@ namespace Half_Life_3.Entities
 
             foreach (KeyValuePair<string, Entity> potentialTarget in Entities)
             {
-                if (Entities[character.Name] == potentialTarget.Value)
+                try
+                {
+                    if (Entities[character.Name] == potentialTarget.Value)
+                    {
+                        continue;
+                    }
+                }
+                catch (Exception e)
                 {
                     continue;
                 }
@@ -368,7 +395,15 @@ namespace Half_Life_3.Entities
 
         public void Update()
         {
-            CameraPosition = Game1.Freeman.WorldPosition - Game1.Freeman.ScreenPosition;
+            if (Game1.StoryManager.Flags["helicopter"].IsActive)
+            {
+                CameraPosition = Game1.Jim.WorldPosition - Game1.Freeman.ScreenPosition;
+            }
+            else
+            {
+                CameraPosition = Game1.Freeman.WorldPosition - Game1.Freeman.ScreenPosition;
+            }
+
             foreach (var entity in Entities.Values)
             {
                 if (entity.Sprites != null)
@@ -382,7 +417,15 @@ namespace Half_Life_3.Entities
         {
             foreach (var entity in Entities.Values)
             {
-                entity.Show();
+                if (entity.Type == EntityType.Helicopter)
+                {
+                    Helicopter hell = entity as Helicopter;
+                    hell.Draw();
+                }
+                else
+                {
+                    entity.Show();
+                }
             }
         }
     }

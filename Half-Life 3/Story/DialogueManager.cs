@@ -54,6 +54,16 @@ namespace Half_Life_3.Story
             sBuilder.Clear();
         }
 
+        public void WriteNow(string sayer, string words)
+        {
+            sBuilder.Append(sayer.ToUpper());
+            sBuilder.Append(": " + words.ToUpper());
+
+            ArtemisEngine.RenderPipeline.RenderText(Font, sBuilder, FontPosition, FontColour);
+
+            sBuilder.Clear();
+        }
+
         public void Render()
         {
             if (ToSay.Count > 0)

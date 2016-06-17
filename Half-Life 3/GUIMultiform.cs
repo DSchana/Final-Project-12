@@ -58,9 +58,15 @@ namespace Half_Life_3
         public void MainRenderer()
         {
             sBuilder.Append("HEALTH: ");
-            sBuilder.Append(Game1.Freeman.Health);
-            sBuilder.Append("  AMMO: ");
-            sBuilder.Append(Game1.Freeman.CurrentWeapon.ClipAmmo + "/" + Game1.Freeman.CurrentWeapon.TotalAmmo);
+            if (Game1.StoryManager.Flags["helicopter"].IsActive)
+                sBuilder.Append(Game1.Jim.Health);
+            else
+                sBuilder.Append(Game1.Freeman.Health);
+            if (!Game1.StoryManager.Flags["helicopter"].IsActive)
+            {
+                sBuilder.Append("  AMMO: ");
+                sBuilder.Append(Game1.Freeman.CurrentWeapon.ClipAmmo + "/" + Game1.Freeman.CurrentWeapon.TotalAmmo);
+            }
 
             ArtemisEngine.RenderPipeline.RenderText(Font, sBuilder, FontPosition, FontColour);
 

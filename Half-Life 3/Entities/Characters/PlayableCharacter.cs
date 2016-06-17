@@ -64,6 +64,14 @@ namespace Half_Life_3.Entities.Characters
             Console.WriteLine("MADE FREEMAN\n");
         }
 
+        public void StopUpdating()
+        {
+            RemoveUpdater(UpdateWeapon);
+            RemoveUpdater(Rotate);
+            RemoveUpdater(Move);
+            RemoveUpdater(Attack);
+        }
+
         public void UpdateWeapon()
         {
             if (ArtemisEngine.Keyboard.IsClicked(Keys.D1))      // UPSMatch

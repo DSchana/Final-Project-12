@@ -8,6 +8,7 @@
         CombineSoldier = 3,
         Obstacle = 4,
         Explosive = 5,
-        Weapon = 6
+        Weapon = 6,
+        Helicopter = 7
     }
 }

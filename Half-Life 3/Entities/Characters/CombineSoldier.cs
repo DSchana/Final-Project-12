@@ -28,25 +28,25 @@ namespace Half_Life_3.Entities.Characters
             {
                 SetMaxHealth(40);
                 CurrentWeapon = new Weapon("USP", this, WeaponType.USPMatch);
-                AttackDelay = 0.04f;
+                AttackDelay = 0.01f;
             }
             else if (CType == CombineType.OverwatchSoldier)
             {
                 SetMaxHealth(50);
                 CurrentWeapon = new Weapon("MP7", this, WeaponType.MP7);
-                AttackDelay = 0.07f;
+                AttackDelay = 0.02f;
             }
             else if (CType == CombineType.OverwatchElite)
             {
                 SetMaxHealth(70);
                 CurrentWeapon = new Weapon("MP7", this, WeaponType.MP7);
-                AttackDelay = 0.07f;
+                AttackDelay = 0.02f;
             }
             else if (CType == CombineType.Stalker)
             {
                 SetMaxHealth(25);
                 CurrentWeapon = new Weapon("USP", this, WeaponType.USPMatch);
-                AttackDelay = 0.04f;
+                AttackDelay = 0.01f;
             }
 
             CurrentWeapon.IsActive = true;
@@ -146,13 +146,13 @@ namespace Half_Life_3.Entities.Characters
             else if (Math.Sqrt(Math.Pow(Math.Abs(WorldPosition.X - Game1.Freeman.WorldPosition.X), 2) + Math.Pow(Math.Abs(WorldPosition.Y - Game1.Freeman.WorldPosition.Y), 2)) <= (int)CurrentWeapon.MeleeRange && !Sprites.CurrentState.Contains("meleeattack"))
             {
                 ChangeState("meleeattack");
-                // CurrentWeapon.Fire(DamageType.Melee);
+                CurrentWeapon.Fire(DamageType.Melee);
             }
             else if (!Sprites.CurrentState.Contains("shoot") && CurrentWeapon.ClipAmmo > 0 && CurrentAttackTime >= 2)
             {
                 CurrentAttackTime = 0.0f;
                 ChangeState("shoot");
-                // CurrentWeapon.Fire();
+                CurrentWeapon.Fire();
             }
         }
     }
